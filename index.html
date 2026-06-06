@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tóth Épületgépészet – Klíma, Víz, Gáz, Fűtés, Villany | Tóth Bendegúz E.V.</title>
+<meta name="description" content="Tóth Bendegúz E.V. – Megbízható épületgépészet egy kézből: klíma, gázkazán, gázkonvektor, víz-gáz-fűtés, villanyszerelés, duguláselhárítás és hőszivattyú karbantartás. Gyors kiszállás, garanciával." />
+<meta name="theme-color" content="#ffffff" />
+<link rel="icon" type="image/png" href="logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+/* =============================================
+   TOKENS — clean, blue-primary (Redőnyangyal-style)
+   ============================================= */
+:root{
+  --blue-deep:#0a2a6b;
+  --blue:#1e56d6;
+  --blue-2:#2e6dec;
+  --blue-soft:#e8f0fe;
+  --orange:#ff6a1a;
+  --orange-deep:#e8451a;
+  --orange-soft:#fff0e6;
+
+  --bg:#ffffff;
+  --bg-2:#f7f9fc;
+  --bg-3:#eef2f8;
+  --surface:#ffffff;
+
+  --fg:#0f172a;
+  --fg-muted:#4b5563;
+  --fg-dim:#6b7280;
+
+  --border:#e6ebf3;
+  --border-strong:#d5dde8;
+
+  --danger:#dc2626;
+  --success:#16a34a;
+  --star:#f5b302;
+
+  --grad-blue:linear-gradient(135deg,var(--blue) 0%,var(--blue-deep) 100%);
+  --grad-orange:linear-gradient(135deg,var(--orange) 0%,var(--orange-deep) 100%);
+
+  --radius:14px; --radius-lg:20px; --radius-sm:10px;
+  --container:1140px;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.05),0 1px 3px rgba(15,23,42,.06);
+  --shadow:0 8px 22px -10px rgba(15,23,42,.15),0 2px 6px -2px rgba(15,23,42,.06);
+  --shadow-lg:0 22px 54px -18px rgba(15,23,42,.2);
+  --shadow-orange:0 10px 22px -8px rgba(255,106,26,.4);
+  --ring:0 0 0 3px rgba(30,86,214,.32);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background:var(--bg);color:var(--fg);line-height:1.6;font-size:1rem;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+ul{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4,p{margin:0}
+:focus-visible{outline:none;box-shadow:var(--ring);border-radius:6px}
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:clamp(1.1rem,4vw,1.8rem)}
+.skip-link{position:absolute;left:-999px;top:0;z-index:200;background:var(--orange);color:#fff;padding:.6rem 1rem;font-weight:700}
+.skip-link:focus{left:0}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.95rem 1.5rem;border-radius:var(--radius-sm);font-weight:700;font-size:1rem;
+  letter-spacing:.01em;min-height:50px;
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s var(--ease),border-color .2s var(--ease),color .2s;
+  white-space:nowrap;text-align:center}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 6px 16px -6px rgba(30,86,214,.55)}
+.btn-primary:hover{background:var(--blue-deep);transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(30,86,214,.6)}
+.btn-orange{background:var(--orange);color:#fff;box-shadow:var(--shadow-orange)}
+.btn-orange:hover{background:var(--orange-deep);transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(255,106,26,.55)}
+.btn-ghost{background:#fff;color:var(--fg);border:1.5px solid var(--border-strong)}
+.btn-ghost:hover{background:var(--bg-2);border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.btn-block{width:100%}
+.btn-lg{padding:1.05rem 1.7rem;font-size:1.05rem;min-height:54px}
+
+/* =============================================
+   HEADER
+   ============================================= */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.93);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;transition:border-color .25s,box-shadow .25s,background .25s}
+.site-header.scrolled{border-bottom-color:var(--border);box-shadow:0 1px 0 var(--border);background:rgba(255,255,255,.98)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:80px}
+.brand{display:inline-flex;align-items:center;gap:.6rem;font-weight:800}
+.brand-logo{height:58px;width:auto;display:block;filter:drop-shadow(0 2px 4px rgba(15,23,42,.08))}
+.nav-links{display:none;align-items:center;gap:.2rem}
+.nav-links a{padding:.55rem .85rem;border-radius:8px;font-size:.95rem;font-weight:600;color:var(--fg-muted);transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--blue);background:var(--blue-soft)}
+.nav-phone{display:none;align-items:center;gap:.55rem;font-weight:800;color:var(--blue-deep);padding:.55rem .9rem;border-radius:10px;background:var(--blue-soft);font-size:1.02rem;transition:transform .2s,background .2s}
+.nav-phone svg{width:18px;height:18px;color:var(--blue)}
+.nav-phone:hover{transform:translateY(-1px);background:#dbe7fd}
+.nav-right{display:flex;align-items:center;gap:.7rem}
+.hamburger{display:inline-flex;width:48px;height:48px;align-items:center;justify-content:center;
+  border-radius:10px;border:1.5px solid var(--border-strong);background:#fff;color:var(--fg)}
+.hamburger svg{width:24px;height:24px}
+.hamburger .x{display:none}
+.hamburger[aria-expanded="true"] .menu{display:none}
+.hamburger[aria-expanded="true"] .x{display:block}
+
+.mobile-menu{position:fixed;inset:80px 0 auto 0;z-index:99;background:#fff;border-bottom:1px solid var(--border);
+  transform:translateY(-12px);opacity:0;visibility:hidden;
+  transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s;
+  box-shadow:0 18px 40px -20px rgba(15,23,42,.25)}
+.mobile-menu.open{opacity:1;visibility:visible;transform:translateY(0)}
+.mobile-menu ul{display:flex;flex-direction:column;padding:1rem clamp(1.1rem,4vw,1.8rem) 1.6rem}
+.mobile-menu a{padding:1rem .4rem;font-size:1.1rem;font-weight:600;border-bottom:1px solid var(--border);color:var(--fg)}
+.mobile-menu .btn{margin-top:1rem}
+.mobile-menu .btn-block{color:#fff}
+
+@media(min-width:880px){
+  .nav-links{display:inline-flex}
+  .nav-phone{display:inline-flex}
+  .hamburger{display:none}
+}
+
+/* =============================================
+   HERO  (Redőnyangyal-style: text left, real photo right)
+   ============================================= */
+.hero{padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(2.5rem,6vw,4.5rem);position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,var(--bg-2) 100%)}
+.hero-grid{display:grid;gap:clamp(2rem,5vw,3.5rem);align-items:center}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.84rem;font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;
+  padding:.45rem .85rem;background:var(--blue-soft);border-radius:100px}
+.eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 4px rgba(22,163,74,.2)}
+
+.hero h1{font-size:clamp(2.1rem,5.2vw,3.3rem);font-weight:900;line-height:1.08;letter-spacing:-.025em;color:var(--fg)}
+.hero h1 .grad{color:var(--orange)}
+.hero h1 .grad-b{color:var(--blue)}
+.hero-sub{color:var(--fg-muted);font-size:clamp(1.02rem,1.6vw,1.18rem);max-width:54ch;margin-top:1.2rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:1.8rem}
+
+.hero-trust{display:grid;grid-template-columns:1fr;gap:.7rem;margin-top:2rem;max-width:520px}
+@media(min-width:520px){.hero-trust{grid-template-columns:repeat(3,1fr)}}
+.ht{display:flex;align-items:flex-start;gap:.6rem;padding:.85rem .9rem;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-sm)}
+.ht-i{width:36px;height:36px;flex:none;border-radius:10px;display:grid;place-items:center;background:var(--orange-soft)}
+.ht-i svg{width:20px;height:20px;color:var(--orange)}
+.ht-t{font-weight:800;font-size:.92rem;line-height:1.2}
+.ht-d{font-size:.78rem;color:var(--fg-muted);margin-top:.15rem}
+
+/* Hero photo */
+.hero-photo{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);
+  aspect-ratio:4/5;max-width:520px;margin-inline:auto;width:100%;background:var(--bg-3)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-badge-float{position:absolute;left:1rem;bottom:1rem;display:inline-flex;align-items:center;gap:.55rem;
+  padding:.65rem 1rem;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-radius:100px;
+  font-weight:800;font-size:.9rem;box-shadow:var(--shadow);color:var(--blue-deep)}
+.hero-badge-float .dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 4px rgba(22,163,74,.22)}
+.hero-stars-float{position:absolute;right:1rem;top:1rem;background:rgba(255,255,255,.95);border-radius:14px;
+  padding:.55rem .75rem;display:flex;align-items:center;gap:.5rem;box-shadow:var(--shadow)}
+.hero-stars-float .stars{display:inline-flex;gap:1px;color:var(--star)}
+.hero-stars-float .stars svg{width:15px;height:15px}
+.hero-stars-float .lbl{font-size:.82rem;font-weight:800;color:var(--fg)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.is-visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* =============================================
+   SECTION HEADERS
+   ============================================= */
+.section-head{max-width:720px;margin-inline:auto;text-align:center}
+.section-head .eyebrow{margin-inline:auto}
+.section-head h2{font-size:clamp(1.75rem,4vw,2.4rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--fg)}
+.section-head p{color:var(--fg-muted);margin-top:.9rem;font-size:1.05rem}
+.section{padding:clamp(3.5rem,8vw,5.5rem) 0}
+
+/* =============================================
+   WHEN-TO-CALL (symptoms)
+   ============================================= */
+.signs{background:var(--bg-2)}
+.signs-grid{display:grid;gap:1rem;margin-top:2.4rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))}
+.sign{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;
+  display:flex;gap:.95rem;align-items:flex-start;box-shadow:var(--shadow-sm);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease)}
+.sign:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--orange)}
+.sign-i{width:40px;height:40px;flex:none;border-radius:10px;display:grid;place-items:center;background:var(--orange-soft)}
+.sign-i svg{width:22px;height:22px;color:var(--orange)}
+.sign h4{font-size:1.02rem;font-weight:800;letter-spacing:-.01em}
+.sign p{font-size:.9rem;color:var(--fg-muted);margin-top:.25rem}
+
+/* =============================================
+   SERVICES — image cards
+   ============================================= */
+.services{background:#fff}
+.svc-grid{display:grid;gap:1.3rem;margin-top:2.6rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.svc{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;
+  display:flex;flex-direction:column;
+  box-shadow:var(--shadow-sm);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.svc:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:transparent}
+.svc-img{aspect-ratio:5/4;overflow:hidden;background:linear-gradient(135deg,var(--blue-soft),#fff);position:relative}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.svc:hover .svc-img img{transform:scale(1.05)}
+.svc-img-icon{position:absolute;left:1rem;top:1rem;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.95);box-shadow:var(--shadow-sm);backdrop-filter:blur(4px)}
+.svc-img-icon svg{width:26px;height:26px;color:var(--blue)}
+.svc.orange .svc-img-icon svg{color:var(--orange)}
+.svc-body{padding:1.5rem 1.5rem 1.7rem;display:flex;flex-direction:column;flex:1}
+.svc h3{font-size:1.16rem;font-weight:800;letter-spacing:-.01em;color:var(--fg)}
+.svc>.svc-body>p{color:var(--fg-muted);font-size:.95rem;margin-top:.5rem}
+.svc-list{margin-top:1rem;display:flex;flex-direction:column;gap:.45rem}
+.svc-list li{display:flex;gap:.5rem;align-items:flex-start;font-size:.88rem;color:var(--fg-muted)}
+.svc-list li svg{width:16px;height:16px;color:var(--orange);flex:none;margin-top:3px}
+
+/* No-image variant for services without a photo */
+.svc.no-img .svc-img{display:none}
+.svc.no-img .svc-body{padding-top:1.7rem}
+.svc.no-img .svc-icon-block{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;margin-bottom:1.1rem;background:var(--blue-soft);border:1px solid rgba(30,86,214,.15)}
+.svc.no-img.orange .svc-icon-block{background:var(--orange-soft);border-color:rgba(255,106,26,.22)}
+.svc.no-img .svc-icon-block svg{width:28px;height:28px;color:var(--blue)}
+.svc.no-img.orange .svc-icon-block svg{color:var(--orange)}
+
+.svc.wide{grid-column:1/-1}
+@media(min-width:760px){.svc.wide{grid-column:span 2}}
+.svc.wide .svc-img{aspect-ratio:5/3}
+.svc.wide .svc-list{display:grid;grid-template-columns:1fr;gap:.45rem .9rem;margin-top:1rem}
+@media(min-width:560px){.svc.wide .svc-list{grid-template-columns:1fr 1fr}}
+
+/* =============================================
+   GALLERY  (Munkáink)
+   ============================================= */
+.gallery{background:var(--bg-2)}
+.gal-grid{display:grid;gap:1rem;margin-top:2.6rem;
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
+.gal-grid figure{position:relative;border-radius:var(--radius);overflow:hidden;background:#fff;
+  box-shadow:var(--shadow-sm);aspect-ratio:3/4;transition:transform .3s var(--ease),box-shadow .3s var(--ease);margin:0}
+.gal-grid figure:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.gal-grid figure:hover img{transform:scale(1.05)}
+.gal-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:1rem 1rem .85rem;color:#fff;font-weight:700;font-size:.92rem;
+  background:linear-gradient(to top,rgba(10,42,107,.85),rgba(10,42,107,0))}
+
+/* =============================================
+   GUARANTEE
+   ============================================= */
+.guarantee{background:#fff}
+.gua-wrap{background:linear-gradient(160deg,var(--bg-2),#fff);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:clamp(1.6rem,4vw,2.6rem);
+  display:grid;gap:2rem;align-items:center;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.gua-wrap::before{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,106,26,.16),transparent 70%);pointer-events:none}
+@media(min-width:860px){.gua-wrap{grid-template-columns:auto 1fr}}
+.gua-shield{width:130px;height:130px;border-radius:50%;display:grid;place-items:center;
+  background:var(--orange);box-shadow:var(--shadow-orange);margin-inline:auto;position:relative;z-index:1}
+.gua-shield svg{width:68px;height:68px;color:#fff}
+.gua-content{position:relative;z-index:1}
+.gua-content h2{font-size:clamp(1.6rem,3.5vw,2.1rem);font-weight:900;letter-spacing:-.02em}
+.gua-content p{color:var(--fg-muted);margin-top:.7rem;font-size:1.02rem}
+.gua-points{display:grid;gap:.65rem;margin-top:1.3rem}
+@media(min-width:560px){.gua-points{grid-template-columns:1fr 1fr}}
+.gua-points li{display:flex;gap:.55rem;align-items:flex-start;font-weight:600;font-size:.95rem;color:var(--fg)}
+.gua-points li svg{width:20px;height:20px;color:var(--success);flex:none;margin-top:1px}
+
+/* =============================================
+   TESTIMONIALS
+   ============================================= */
+.reviews{background:var(--bg-2)}
+.rev-grid{display:grid;gap:1.1rem;margin-top:2.6rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr))}
+.rev{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow-sm);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.rev:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.rev-stars{display:inline-flex;gap:2px;color:var(--star);margin-bottom:.8rem}
+.rev-stars svg{width:18px;height:18px}
+.rev-q{font-size:.98rem;line-height:1.55;color:var(--fg)}
+.rev-q::before{content:open-quote;color:var(--orange);font-size:1.5rem;font-weight:900;margin-right:.15rem;line-height:0}
+.rev-meta{margin-top:1rem;display:flex;align-items:center;gap:.7rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.rev-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:.95rem;
+  background:var(--blue);flex:none}
+.rev-av.b{background:var(--orange)}
+.rev-name{font-weight:800;font-size:.92rem}
+.rev-loc{font-size:.8rem;color:var(--fg-muted)}
+.rev-disclaimer{text-align:center;font-size:.78rem;color:var(--fg-dim);margin-top:1.5rem;font-style:italic}
+
+/* =============================================
+   PROCESS
+   ============================================= */
+.process{background:#fff}
+.proc-grid{display:grid;gap:1.2rem;margin-top:2.6rem;grid-template-columns:1fr}
+@media(min-width:760px){.proc-grid{grid-template-columns:repeat(3,1fr)}}
+.proc{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.8rem;text-align:center;
+  position:relative;box-shadow:var(--shadow-sm);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.proc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.proc-n{position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;
+  background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;font-size:1.1rem;
+  box-shadow:0 8px 18px -6px rgba(30,86,214,.55)}
+.proc-i{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;margin:1rem auto 1rem;
+  background:var(--blue-soft);border:1px solid rgba(30,86,214,.18)}
+.proc-i svg{width:30px;height:30px;color:var(--blue)}
+.proc h3{font-size:1.15rem;font-weight:800;letter-spacing:-.01em}
+.proc p{color:var(--fg-muted);font-size:.94rem;margin-top:.55rem}
+
+/* =============================================
+   FAQ
+   ============================================= */
+.faq{background:var(--bg-2)}
+.faq-list{max-width:780px;margin:2.6rem auto 0;display:flex;flex-direction:column;gap:.8rem}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+  transition:border-color .25s,box-shadow .25s}
+.faq-item[open]{border-color:var(--blue);box-shadow:var(--shadow-sm)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 1.3rem;
+  font-weight:700;font-size:1.02rem;cursor:pointer;color:var(--fg);list-style:none;min-height:56px}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:"";flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue-soft);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e56d6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:center;background-size:14px;transition:transform .25s var(--ease)}
+.faq-item[open] .faq-q::after{transform:rotate(180deg);background-color:var(--orange-soft);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff6a1a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>")}
+.faq-a{padding:0 1.3rem 1.3rem;color:var(--fg-muted);font-size:.96rem;line-height:1.6}
+
+/* =============================================
+   LEAD FORM (CTA SECTION)
+   ============================================= */
+.lead{background:#fff;padding:clamp(3.5rem,7vw,5rem) 0}
+.lead-grid{display:grid;gap:1.6rem;align-items:stretch}
+@media(min-width:920px){.lead-grid{grid-template-columns:.85fr 1.15fr}}
+
+.lead-info{background:var(--blue-deep);border-radius:var(--radius-lg);
+  padding:clamp(1.8rem,4vw,2.4rem);color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.lead-info::after{content:"";position:absolute;right:-80px;bottom:-80px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,106,26,.32),transparent 70%);pointer-events:none}
+.lead-info h3{font-size:1.55rem;font-weight:900;letter-spacing:-.02em;position:relative;z-index:1}
+.lead-info>p{color:#c8d3e9;margin-top:.7rem;position:relative;z-index:1}
+.li-list{margin-top:1.8rem;display:flex;flex-direction:column;gap:1.05rem;position:relative;z-index:1}
+.li-item{display:flex;gap:.85rem;align-items:flex-start}
+.li-i{width:42px;height:42px;flex:none;border-radius:11px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+  display:grid;place-items:center}
+.li-i svg{width:21px;height:21px;color:var(--orange)}
+.li-lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:#9fb0cc;font-weight:700}
+.li-val{font-weight:700;font-size:1rem;margin-top:.1rem;color:#fff}
+.li-call{display:block;margin-top:1.8rem;padding:1.05rem 1.2rem;background:var(--orange);border-radius:12px;
+  font-weight:800;font-size:1.08rem;text-align:center;color:#fff;box-shadow:var(--shadow-orange);
+  transition:transform .2s,box-shadow .2s;position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;width:100%}
+.li-call:hover{transform:translateY(-2px);background:var(--orange-deep);box-shadow:0 14px 30px -10px rgba(255,106,26,.6)}
+.li-call svg{width:20px;height:20px}
+.li-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.4rem;position:relative;z-index:1}
+.li-tags span{font-size:.74rem;font-weight:700;letter-spacing:.08em;padding:.35rem .65rem;border-radius:100px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+
+.lead-form{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:clamp(1.8rem,4vw,2.4rem);box-shadow:var(--shadow)}
+.lead-form h3{font-size:1.45rem;font-weight:900;letter-spacing:-.02em}
+.lead-form .fhint{color:var(--fg-muted);font-size:.94rem;margin-top:.4rem;margin-bottom:1.5rem}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-size:.86rem;font-weight:700;margin-bottom:.45rem;color:var(--fg)}
+.field label .req{color:var(--orange)}
+.field input,.field select,.field textarea{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:10px;
+  padding:.85rem .95rem;color:var(--fg);font-size:1rem;min-height:50px;font-family:inherit;
+  transition:border-color .2s,box-shadow .2s}
+.field textarea{min-height:118px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:var(--fg-dim)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,86,214,.15)}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--danger);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.field .err{display:none;color:var(--danger);font-size:.82rem;margin-top:.4rem;font-weight:600}
+.field.invalid .err{display:block}
+.row2{display:grid;gap:1.1rem}
+@media(min-width:560px){.row2{grid-template-columns:1fr 1fr}}
+
+/* File upload */
+.upload{border:1.5px dashed var(--border-strong);border-radius:12px;padding:1.2rem;background:var(--bg-2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;
+  cursor:pointer;transition:border-color .2s,background .2s;position:relative}
+.upload:hover,.upload.drag{border-color:var(--blue);background:var(--blue-soft)}
+.upload input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.upload-i{width:42px;height:42px;border-radius:10px;background:#fff;border:1px solid var(--border);display:grid;place-items:center}
+.upload-i svg{width:22px;height:22px;color:var(--blue)}
+.upload-t{font-weight:700;color:var(--fg);font-size:.95rem}
+.upload-d{font-size:.8rem;color:var(--fg-muted)}
+.upload-files{margin-top:.7rem;display:flex;flex-direction:column;gap:.35rem}
+.upload-files .uf{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:.86rem;color:var(--fg);background:#fff;border:1px solid var(--border);border-radius:8px;padding:.4rem .6rem}
+.upload-files .uf button{color:var(--danger);font-weight:700;font-size:1rem;padding:.2rem .4rem;border-radius:6px}
+.upload-files .uf button:hover{background:rgba(220,38,38,.08)}
+
+.gdpr{display:flex;gap:.6rem;align-items:flex-start;margin:1rem 0 1.4rem;font-size:.88rem;color:var(--fg-muted)}
+.gdpr input{width:18px;height:18px;flex:none;margin-top:3px;accent-color:var(--blue)}
+.gdpr a{color:var(--blue);font-weight:700;text-decoration:underline}
+.gdpr.invalid{color:var(--danger)}
+.gdpr.invalid input{outline:2px solid var(--danger);outline-offset:2px}
+
+.form-success{display:none;align-items:center;gap:.7rem;background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.4);
+  color:#15803d;padding:.95rem 1rem;border-radius:10px;font-weight:600;margin-top:1rem}
+.form-success.show{display:flex}
+.form-success svg{width:22px;height:22px;flex:none}
+.form-note{font-size:.8rem;color:var(--fg-dim);margin-top:.4rem}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.site-footer{border-top:1px solid var(--border);background:#fff;padding:clamp(2.5rem,6vw,4rem) 0 1.6rem}
+.foot-grid{display:grid;gap:2rem}
+@media(min-width:760px){.foot-grid{grid-template-columns:1.5fr 1fr 1fr}}
+.foot-about p{color:var(--fg-muted);font-size:.92rem;margin-top:1rem;max-width:38ch}
+.foot-logo{height:64px;width:auto}
+.foot-col h5{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--fg-dim);margin-bottom:.9rem;font-weight:800}
+.foot-col a,.foot-col li{color:var(--fg-muted);font-size:.93rem;padding:.28rem 0;display:block;transition:color .2s}
+.foot-col a:hover{color:var(--orange)}
+.foot-bottom{border-top:1px solid var(--border);margin-top:2.4rem;padding-top:1.4rem;display:flex;
+  flex-wrap:wrap;gap:.6rem 1.2rem;justify-content:space-between;align-items:center;color:var(--fg-dim);font-size:.84rem}
+.foot-tagline{font-weight:700;letter-spacing:.08em;color:var(--fg-muted)}
+.foot-tagline b{color:var(--orange)}
+
+/* Floating call button */
+.fab{position:fixed;right:16px;bottom:16px;z-index:90;display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--orange);color:#fff;font-weight:800;padding:.95rem 1.3rem;border-radius:100px;
+  box-shadow:var(--shadow-orange);font-size:1rem;
+  animation:pulse 2.2s ease-in-out infinite}
+.fab svg{width:20px;height:20px}
+@keyframes pulse{
+  0%,100%{box-shadow:var(--shadow-orange),0 0 0 0 rgba(255,106,26,.5)}
+  50%{box-shadow:var(--shadow-orange),0 0 0 12px rgba(255,106,26,0)}
+}
+@media (prefers-reduced-motion:reduce){.fab{animation:none}}
+@media(min-width:880px){.fab{display:none}}
+
+/* =============================================
+   LIGHTBOX (gallery)
+   ============================================= */
+.lbox{position:fixed;inset:0;z-index:200;background:rgba(7,15,31,.92);display:none;align-items:center;justify-content:center;
+  padding:clamp(1rem,4vw,3rem);opacity:0;transition:opacity .25s var(--ease)}
+.lbox.open{display:flex;opacity:1}
+.lbox img{max-width:100%;max-height:88vh;border-radius:12px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+.lbox-close,.lbox-prev,.lbox-next{position:absolute;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  color:#fff;border-radius:50%;width:48px;height:48px;display:grid;place-items:center;cursor:pointer;
+  transition:background .2s,transform .2s}
+.lbox-close{top:1.2rem;right:1.2rem}
+.lbox-prev{left:1.2rem;top:50%;transform:translateY(-50%)}
+.lbox-next{right:1.2rem;top:50%;transform:translateY(-50%)}
+.lbox-close:hover,.lbox-prev:hover,.lbox-next:hover{background:rgba(255,255,255,.22)}
+.lbox-prev svg,.lbox-next svg,.lbox-close svg{width:24px;height:24px}
+.lbox-counter{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);color:#fff;font-weight:600;font-size:.92rem;
+  background:rgba(0,0,0,.4);padding:.4rem 1rem;border-radius:100px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Ugrás a tartalomra</a>
+
+<!-- HEADER -->
+<header class="site-header" id="top">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="Tóth Épületgépészet kezdőlap">
+      <img class="brand-logo" src="logo.png" alt="Tóth Épületgépészet – Tóth Bendegúz E.V." />
+    </a>
+    <nav class="nav-links" aria-label="Fő navigáció">
+      <a href="#mikor">Mikor hívjon</a>
+      <a href="#szolgaltatasok">Szolgáltatások</a>
+      <a href="#munkaink">Munkáink</a>
+      <a href="#velemenyek">Vélemények</a>
+      <a href="#gyik">GYIK</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:+36000000000" aria-label="Telefonhívás">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>[TELEFONSZÁM]</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#mikor">Mikor hívjon</a></li>
+      <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+      <li><a href="#munkaink">Munkáink</a></li>
+      <li><a href="#velemenyek">Vélemények</a></li>
+      <li><a href="#gyik">GYIK</a></li>
+      <li><a class="btn btn-orange btn-block" href="#ajanlat">Ajánlatot kérek</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow"><span class="pulse"></span> Akár még ma kiszállunk</span>
+      <h1>
+        Megbízható
+        <span class="grad-b">épületgépészet</span>
+        Budapesten és környékén
+      </h1>
+      <p class="hero-sub">Klíma, víz-gáz-fűtés, gázkazán, gázkonvektor, villany, duguláselhárítás és hőszivattyú – minden egy kézből.
+        Gyorsan, garanciával, átlátható árakkal.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-orange btn-lg" href="#ajanlat">
+          Ajánlatot kérek
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost btn-lg" href="tel:+36000000000">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Hívás most
+        </a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="ht">
+          <div class="ht-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><div class="ht-t">Akár még ma</div><div class="ht-d">Gyors kiszállás</div></div>
+        </div>
+        <div class="ht">
+          <div class="ht-i"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/></svg></div>
+          <div><div class="ht-t">Garanciával</div><div class="ht-d">Munkára és anyagra</div></div>
+        </div>
+        <div class="ht">
+          <div class="ht-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-1"/><path d="M16 12h6M19 9l3 3-3 3"/></svg></div>
+          <div><div class="ht-t">Nincs rejtett költség</div><div class="ht-d">Átlátható ár</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero photo -->
+    <div class="hero-photo reveal">
+      <img src="kepek/kep1.jpg" alt="Tóth Épületgépészet – klíma kültéri egység telepítése helyszínen, szerszámkészlettel" loading="eager" />
+      <div class="hero-badge-float"><span class="dot"></span> Elérhető – hívható</div>
+      <div class="hero-stars-float">
+        <span class="stars" aria-label="5 csillagos átlag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+        </span>
+        <span class="lbl">Elégedett ügyfelek</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHEN TO CALL -->
+<section class="section signs" id="mikor">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Mikor hívjon minket</span>
+      <h2>Ismerős a probléma? <span style="color:var(--orange)">Segítünk.</span></h2>
+      <p>Ha az alábbiak közül bármelyikkel találkozott otthonában vagy üzletében, érdemes szakemberhez fordulni – mielőtt nagyobb baj lenne.</p>
+    </div>
+    <div class="signs-grid">
+      <div class="sign reveal">
+        <div class="sign-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/></svg></div>
+        <div><h4>Nem fűt a kazán</h4><p>Hideg radiátorok, nem indul el a fűtés, hibakód a kijelzőn.</p></div>
+      </div>
+      <div class="sign reveal">
+        <div class="sign-i"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2s7 8 7 13a7 7 0 0 1-14 0c0-5 7-13 7-13z"/></svg></div>
+        <div><h4>Csöpög a csap, szivárog a cső</h4><p>Vízkár veszély – minél előbb el kell hárítani.</p></div>
+      </div>
+      <div class="sign reveal">
+        <div class="sign-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6a4 4 0 0 0 4 4h4a4 4 0 0 1 4 4v2"/><circle cx="6" cy="4" r="2"/></svg></div>
+        <div><h4>Eldugult lefolyó</h4><p>Lassan folyik el a víz, kellemetlen szag a fürdőből vagy konyhából.</p></div>
+      </div>
+      <div class="sign reveal">
+        <div class="sign-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M12 6 8.5 3.5M12 6l3.5-2.5M2 12h20"/></svg></div>
+        <div><h4>Nem hűt rendesen a klíma</h4><p>Furcsa szag, csöpögés, vagy gyengébb a teljesítmény, mint régen.</p></div>
+      </div>
+      <div class="sign reveal">
+        <div class="sign-i"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+        <div><h4>Elavult elektromos hálózat</h4><p>Gyakori biztosítékkiverés, régi vezetékek, kevés konnektor.</p></div>
+      </div>
+      <div class="sign reveal">
+        <div class="sign-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div><h4>Esedékes karbantartás</h4><p>Kazán, klíma, hőszivattyú – az éves szerviz spórol és garantál.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="szolgaltatasok">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Szolgáltatásaink</span>
+      <h2>Teljes körű <span style="color:var(--orange)">épületgépészeti</span> megoldások</h2>
+      <p>Egy szakember, minden szakterület – nem kell külön mestert keresnie a klímához, kazánhoz vagy a vízszereléshez.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <div class="svc-img">
+          <img src="kepek/kep2.jpg" alt="Telepített falra szerelt klíma kültéri egység" loading="lazy" />
+          <div class="svc-img-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M12 6 8.5 3.5M12 6l3.5-2.5M12 18l-3.5 2.5M12 18l3.5 2.5M2 12h20M6 12 3.5 8.5M6 12l-2.5 3.5M18 12l2.5-3.5M18 12l2.5 3.5"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>Klíma telepítés és karbantartás</h3>
+          <p>Split és multi klímák szakszerű felszerelése, tisztítása és éves karbantartása.</p>
+        </div>
+      </article>
+
+      <article class="svc orange reveal">
+        <div class="svc-img">
+          <img src="kepek/kep7.jpg" alt="Bosch gázkazán telepítés" loading="lazy" />
+          <div class="svc-img-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 4-3 5-3 9a3 3 0 0 0 6 0c0-1-.3-2-.8-2.7.4 2.7 1.8 3 1.8 5a4 4 0 0 1-8 0c0-5 4-6 4-11z"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>Gázkazán telepítés és karbantartás</h3>
+          <p>Kondenzációs és hagyományos gázkazánok beüzemelése, cseréje és előírás szerinti szervize.</p>
+        </div>
+      </article>
+
+      <article class="svc no-img orange reveal">
+        <div class="svc-body">
+          <div class="svc-icon-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9c1 1.5-1 2.5 0 4M12 9c1 1.5-1 2.5 0 4M17 9c1 1.5-1 2.5 0 4"/></svg></div>
+          <h3>Gázkonvektor telepítés és karbantartás</h3>
+          <p>Gázkonvektorok felszerelése, tisztítása és javítása a biztonságos, hatékony fűtésért.</p>
+        </div>
+      </article>
+
+      <article class="svc wide reveal">
+        <div class="svc-img">
+          <img src="kepek/kep6.jpg" alt="Vaillant gázkazánok és csőhálózat telepítése" loading="lazy" />
+          <div class="svc-img-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2s7 8 7 13a7 7 0 0 1-14 0c0-5 7-13 7-13z"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>Víz-, gáz- és fűtésszerelés</h3>
+          <p>Komplett szerelési és javítási munkák lakásokban és üzlethelyiségekben.</p>
+          <ul class="svc-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Csaptelep csere</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Kerti csap csere</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Fagyásgátló elzárás</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Radiátor csere</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Radiátor légtelenítés</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Kazán csere és karbantartás</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Vízmelegítő csere és karbantartás</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-img">
+          <img src="kepek/kep8.jpg" alt="Professzionálisan szerelt elektromos kapcsolószekrény" loading="lazy" />
+          <div class="svc-img-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>Villanyszerelés &amp; korszerűsítés</h3>
+          <p>Teljes körű villanyszerelés, elektromos hálózat korszerűsítése és szerelvények felszerelése.</p>
+        </div>
+      </article>
+
+      <article class="svc no-img reveal">
+        <div class="svc-body">
+          <div class="svc-icon-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6a4 4 0 0 0 4 4h4a4 4 0 0 1 4 4v2"/><path d="M16 8h4M18 6v4"/><circle cx="6" cy="4" r="2"/></svg></div>
+          <h3>Duguláselhárítás</h3>
+          <p>Eldugult lefolyók és csatornák gyors, tiszta megszüntetése modern eszközökkel.</p>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-img">
+          <img src="kepek/kep5.jpg" alt="Szakember karbantartást végez hőszivattyús rendszeren" loading="lazy" />
+          <div class="svc-img-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="3.4"/><path d="M12 4.5v2M12 17.5v2M4.5 12h2M17.5 12h2"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>Hőszivattyú karbantartás</h3>
+          <p>Levegő- és talajhőszivattyúk szervize a megbízható, energiatakarékos működésért.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="munkaink">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Munkáink</span>
+      <h2>Néhány <span style="color:var(--orange)">elvégzett munka</span> a gyakorlatból</h2>
+      <p>Valós helyszíni fotók a klíma- és fűtéstechnikai telepítéseinkből, kazánjavításokból és elektromos felújításokból.</p>
+    </div>
+    <div class="gal-grid">
+      <figure class="reveal" data-lb="0"><img src="kepek/kep1.jpg" alt="Kültéri klíma telepítés szerszámkészlettel"><figcaption>Klíma telepítés</figcaption></figure>
+      <figure class="reveal" data-lb="1"><img src="kepek/kep2.jpg" alt="Falra szerelt klíma kültéri egység"><figcaption>Kültéri egység szerelése</figcaption></figure>
+      <figure class="reveal" data-lb="2"><img src="kepek/kep3.jpg" alt="Több klímaegység családi házon"><figcaption>Több helyiséges klimatizálás</figcaption></figure>
+      <figure class="reveal" data-lb="3"><img src="kepek/kep5.jpg" alt="Szakember karbantartást végez hőszivattyús rendszeren"><figcaption>Hőszivattyú karbantartás</figcaption></figure>
+      <figure class="reveal" data-lb="4"><img src="kepek/kep6.jpg" alt="Két Vaillant gázkazán szerelése csőhálózattal"><figcaption>Gázkazán &amp; csőszerelés</figcaption></figure>
+      <figure class="reveal" data-lb="5"><img src="kepek/kep7.jpg" alt="Bosch fali gázkazán telepítés"><figcaption>Bosch gázkazán</figcaption></figure>
+      <figure class="reveal" data-lb="6"><img src="kepek/kep8.jpg" alt="Professzionálisan szerelt elektromos kapcsolószekrény"><figcaption>Elektromos kapcsolószekrény</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="section guarantee" id="garancia">
+  <div class="container">
+    <div class="gua-wrap reveal">
+      <div class="gua-shield">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <div class="gua-content">
+        <h2>Megbízható szakember, <span style="color:var(--orange)">korrekt garancia</span></h2>
+        <p>Az elvégzett munkára garanciát vállalunk, és a beépített berendezésekre is a gyártói jótállás vonatkozik. Visszahívunk és visszamegyünk, ha bármi probléma adódik.</p>
+        <ul class="gua-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Garancia az elvégzett munkára</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Gyártói jótállás minden alkatrészre</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Átlátható, előre egyeztetett ár</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Probléma esetén visszajövünk</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section reviews" id="velemenyek">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Ügyfeleink mondják</span>
+      <h2>5 csillagos vélemények <span style="color:var(--orange)">elégedett ügyfelektől</span></h2>
+      <p>Az alábbi visszajelzések valós ügyfél-tapasztalatokat tükröznek (helyőrzők, valódi nevek és helyszínek hozzáadásra kerülnek).</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="rev-stars" aria-label="5 csillag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+        </div>
+        <p class="rev-q">Elromlott a kazán a leghidegebb napon, és aznap délután már megjavította. Korrekt árért, tisztán dolgozott. Csak ajánlani tudom.</p>
+        <div class="rev-meta">
+          <div class="rev-av">K</div>
+          <div><div class="rev-name">[ÜGYFÉL 1]</div><div class="rev-loc">[KERÜLET / TELEPÜLÉS]</div></div>
+        </div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars" aria-label="5 csillag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+        </div>
+        <p class="rev-q">Klíma telepítést kértem. Pontos időpont, profi munka, mindent szépen elpakolt maga után. Az ár az volt, amit előre megbeszéltünk.</p>
+        <div class="rev-meta">
+          <div class="rev-av b">N</div>
+          <div><div class="rev-name">[ÜGYFÉL 2]</div><div class="rev-loc">[KERÜLET / TELEPÜLÉS]</div></div>
+        </div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars" aria-label="5 csillag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+        </div>
+        <p class="rev-q">Eldugult lefolyó, gyors hívás után még aznap megoldotta. Rendes, közvetlen, hozzáértő szakember.</p>
+        <div class="rev-meta">
+          <div class="rev-av">S</div>
+          <div><div class="rev-name">[ÜGYFÉL 3]</div><div class="rev-loc">[KERÜLET / TELEPÜLÉS]</div></div>
+        </div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars" aria-label="5 csillag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+        </div>
+        <p class="rev-q">Komplett villany felújítást rendeltünk. Tervezett, precíz, megbeszélt árterv szerinti munkavégzés. Nagyon elégedettek vagyunk.</p>
+        <div class="rev-meta">
+          <div class="rev-av b">T</div>
+          <div><div class="rev-name">[ÜGYFÉL 4]</div><div class="rev-loc">[KERÜLET / TELEPÜLÉS]</div></div>
+        </div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars" aria-label="5 csillag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+        </div>
+        <p class="rev-q">Éves kazánkarbantartást végzett. Mindent ellenőrzött, részletesen elmagyarázta, mit talált. Megbízható, korrekt szakember.</p>
+        <div class="rev-meta">
+          <div class="rev-av">H</div>
+          <div><div class="rev-name">[ÜGYFÉL 5]</div><div class="rev-loc">[KERÜLET / TELEPÜLÉS]</div></div>
+        </div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars" aria-label="5 csillag">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .6-5.3 4.7 1.6 6.9L12 17.8 5.7 20.7l1.6-6.9L2 9.1l7-.6z"/></svg>
+        </div>
+        <p class="rev-q">Csaptelepet és kerti csapot is cserélt. Gyors, kulturált, kifogástalan munka. Másnak is őt fogom ajánlani.</p>
+        <div class="rev-meta">
+          <div class="rev-av b">B</div>
+          <div><div class="rev-name">[ÜGYFÉL 6]</div><div class="rev-loc">[KERÜLET / TELEPÜLÉS]</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="rev-disclaimer">A fenti vélemények példák – cserélje le valós ügyfél-visszajelzésekre az [ÜGYFÉL X] és [KERÜLET / TELEPÜLÉS] helyőrzőkkel.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process" id="folyamat">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Hogyan dolgozunk</span>
+      <h2>3 egyszerű lépés <span style="color:var(--orange)">a megoldásig</span></h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc reveal">
+        <div class="proc-n">1</div>
+        <div class="proc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Hívás vagy ajánlatkérés</h3>
+        <p>Hívja a [TELEFONSZÁM] számot, vagy küldje el az űrlapot fotóval – röviden egyeztetjük az igényeit.</p>
+      </div>
+      <div class="proc reveal">
+        <div class="proc-n">2</div>
+        <div class="proc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+        <h3>Felmérés és átlátható árajánlat</h3>
+        <p>Helyszíni vagy online felmérés után díjmentes árajánlatot adunk – nincs rejtett költség.</p>
+      </div>
+      <div class="proc reveal">
+        <div class="proc-n">3</div>
+        <div class="proc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Kivitelezés garanciával</h3>
+        <p>Egyeztetett időpontban, tisztán és precízen dolgozunk – a munkára garanciát vállalunk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="gyik">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Gyakori kérdések</span>
+      <h2>GYIK – <span style="color:var(--orange)">gyors válaszok</span></h2>
+      <p>A leggyakoribb kérdések, amiket ügyfeleinktől kapunk – ha nem találja a választ, hívjon bátran.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary class="faq-q">Mennyibe kerül a kiszállás?</summary>
+        <div class="faq-a">A kiszállási díjat előre egyeztetjük, és előre tudja, mire számíthat. Ha a felmérés alapján megrendeli a munkát, a kiszállás díja sok esetben beleszámít a végösszegbe. Részletek hívásban, az adott szolgáltatás függvényében.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q">Mennyi időn belül tudnak kijönni?</summary>
+        <div class="faq-a">Sürgős esetekben – hibajavítás, vízkár, fűtéskimaradás – igyekszünk akár még aznap, vagy másnap megjelenni. Tervezhető munkák (klíma telepítés, kazán csere, felújítás) esetén előre egyeztetett időpontban érkezünk.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q">Milyen területeken vállalnak munkát?</summary>
+        <div class="faq-a">A [SZOLGÁLTATÁSI TERÜLET] területén vállalunk megbízásokat. Kérjük, hívás vagy ajánlatkérés során adja meg a pontos címet, hogy visszaigazolhassuk, ki tudunk-e szállni.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q">Adnak garanciát az elvégzett munkára?</summary>
+        <div class="faq-a">Igen. Az elvégzett munkára garanciát vállalunk, a beépített berendezésekre és alkatrészekre pedig a gyártói jótállás vonatkozik. Ha valami nem stimmel, visszamegyünk és orvosoljuk.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q">Mit tehetek, ha nem tudom, mi a probléma?</summary>
+        <div class="faq-a">Semmi gond – írja le röviden a tüneteket (pl. „nem fűt a kazán”, „csöpög a csap a fürdőben”), és töltsön fel egy-két fotót az űrlapon keresztül. Ez alapján már sokszor előzetes diagnózist és árajánlatot is tudunk adni.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary class="faq-q">Hogyan tud fizetni?</summary>
+        <div class="faq-a">A munka után helyben készpénzben vagy átutalással is rendezheti a számlát – mindig hivatalos számlát adunk az elvégzett munkáról és a beépített anyagokról.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section class="lead" id="ajanlat">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:2.6rem">
+      <span class="eyebrow">Ajánlatkérés</span>
+      <h2>Kérjen <span style="color:var(--orange)">ingyenes árajánlatot</span> – akár fotóval</h2>
+      <p>Töltse ki az űrlapot vagy hívjon minket – általában 24 órán belül visszajelzünk.</p>
+    </div>
+
+    <div class="lead-grid">
+      <!-- Info column -->
+      <aside class="lead-info reveal">
+        <h3>Tóth Épületgépészet</h3>
+        <p>Tóth Bendegúz E.V. – épületgépészeti szakember, akire nyugodt szívvel bízhatja otthonát.</p>
+
+        <div class="li-list">
+          <div class="li-item">
+            <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="li-lbl">Telefon</div><div class="li-val">[TELEFONSZÁM]</div></div>
+          </div>
+          <div class="li-item">
+            <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></div>
+            <div><div class="li-lbl">E-mail</div><div class="li-val">[EMAIL CÍM]</div></div>
+          </div>
+          <div class="li-item">
+            <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="li-lbl">Szolgáltatási terület</div><div class="li-val">[SZOLGÁLTATÁSI TERÜLET]</div></div>
+          </div>
+          <div class="li-item">
+            <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div><div class="li-lbl">Nyitvatartás</div><div class="li-val">H–P: [IDŐPONT] &middot; Sürgős: [ELÉRHETŐSÉG]</div></div>
+          </div>
+        </div>
+
+        <a class="li-call" href="tel:+36000000000" aria-label="Telefonhívás indítása">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Hívás most: [TELEFONSZÁM]
+        </a>
+
+        <div class="li-tags">
+          <span>MEGBÍZHATÓSÁG</span><span>MINŐSÉG</span><span>SZAKÉRTELEM</span>
+        </div>
+      </aside>
+
+      <!-- Form -->
+      <form class="lead-form reveal" id="contactForm" novalidate>
+        <h3>Ajánlatot kérek</h3>
+        <p class="fhint">A <span style="color:var(--orange)">*</span> jelölt mezők kitöltése kötelező. Csatolhat fotót is – sokszor már a kép alapján is tudunk segíteni.</p>
+
+        <div class="row2">
+          <div class="field">
+            <label for="name">Név <span class="req">*</span></label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Pl. Kovács Anna" required />
+            <span class="err">Kérjük, adja meg a nevét.</span>
+          </div>
+          <div class="field">
+            <label for="phone">Telefonszám <span class="req">*</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+36 ..." required />
+            <span class="err">Adjon meg egy érvényes telefonszámot.</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail cím <span class="req">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="email@pelda.hu" required />
+          <span class="err">Az e-mail cím formátuma nem megfelelő.</span>
+        </div>
+
+        <div class="field">
+          <label for="service">Milyen szolgáltatás érdekli? <span class="req">*</span></label>
+          <select id="service" name="service" required>
+            <option value="">Válasszon szolgáltatást…</option>
+            <option>Klíma telepítés és karbantartás</option>
+            <option>Víz-, gáz- és fűtésszerelés</option>
+            <option>Gázkazán telepítés és karbantartás</option>
+            <option>Gázkonvektor telepítés és karbantartás</option>
+            <option>Villanyszerelés és korszerűsítés</option>
+            <option>Duguláselhárítás</option>
+            <option>Hőszivattyú karbantartás</option>
+            <option>Egyéb / nem tudom</option>
+          </select>
+          <span class="err">Kérjük, válasszon szolgáltatást.</span>
+        </div>
+
+        <div class="field">
+          <label>Fotó csatolása (opcionális)</label>
+          <label class="upload" id="uploadBox" tabindex="0">
+            <input id="fileInput" type="file" name="photos" accept="image/jpeg,image/png,image/heic,image/webp" multiple />
+            <div class="upload-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg></div>
+            <div class="upload-t">Húzza ide a képeket vagy kattintson a feltöltéshez</div>
+            <div class="upload-d">JPG, PNG, HEIC vagy WEBP &middot; akár több fájl</div>
+          </label>
+          <div class="upload-files" id="fileList" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="message">Üzenet / probléma leírása</label>
+          <textarea id="message" name="message" placeholder="Írja le röviden, miben segíthetünk – pl. típus, mióta áll fenn a hiba, hány készüléket érint…"></textarea>
+          <p class="form-note">Adatait kizárólag az árajánlat elkészítéséhez használjuk fel.</p>
+        </div>
+
+        <label class="gdpr" id="gdprLabel">
+          <input id="gdpr" type="checkbox" required />
+          <span>Elfogadom az <a href="#">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy az ajánlatkérés érdekében kapcsolatba lépjenek velem. <span style="color:var(--orange)">*</span></span>
+        </label>
+
+        <button class="btn btn-orange btn-block btn-lg" type="submit">
+          Ajánlatkérés elküldése
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
+          Köszönjük! Üzenetét megkaptuk, telefonon vagy e-mailben hamarosan jelentkezünk. <em style="opacity:.8;font-style:normal">(Demó – nincs háttér-küldés bekötve.)</em>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="brand" href="#top" aria-label="Tóth Épületgépészet">
+          <img class="brand-logo foot-logo" src="logo.png" alt="Tóth Épületgépészet" />
+        </a>
+        <p>Klíma, víz, gáz, fűtés és villanyszerelés egy kézből – megbízható szakember a komfortos otthonért.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Szolgáltatások</h5>
+        <a href="#szolgaltatasok">Klíma telepítés</a>
+        <a href="#szolgaltatasok">Víz-, gáz-, fűtésszerelés</a>
+        <a href="#szolgaltatasok">Gázkazán &amp; konvektor</a>
+        <a href="#szolgaltatasok">Villanyszerelés</a>
+        <a href="#szolgaltatasok">Duguláselhárítás</a>
+        <a href="#szolgaltatasok">Hőszivattyú karbantartás</a>
+      </div>
+      <div class="foot-col">
+        <h5>Kapcsolat</h5>
+        <a href="tel:+36000000000">[TELEFONSZÁM]</a>
+        <a href="mailto:info@example.hu">[EMAIL CÍM]</a>
+        <li>[SZOLGÁLTATÁSI TERÜLET]</li>
+        <li>Tóth Bendegúz E.V.</li>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Tóth Épületgépészet – Tóth Bendegúz E.V. Minden jog fenntartva.</span>
+      <span class="foot-tagline">MEGBÍZHATÓSÁG <b>&bull;</b> MINŐSÉG <b>&bull;</b> SZAKÉRTELEM</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="tel:+36000000000" aria-label="Telefonhívás indítása">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Hívás
+</a>
+
+<!-- LIGHTBOX -->
+<div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="Galéria előnézet">
+  <button class="lbox-close" id="lboxClose" aria-label="Bezárás"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <button class="lbox-prev" id="lboxPrev" aria-label="Előző kép"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+  <button class="lbox-next" id="lboxNext" aria-label="Következő kép"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+  <img id="lboxImg" alt="" />
+  <div class="lbox-counter" id="lboxCounter"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Year */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* Sticky header shadow */
+  var header = document.querySelector(".site-header");
+  var onScroll = function(){ header.classList.toggle("scrolled", window.scrollY > 8); };
+  onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
+
+  /* Mobile menu */
+  var burger = document.getElementById("hamburger");
+  var menu = document.getElementById("mobileMenu");
+  function closeMenu(){ burger.setAttribute("aria-expanded","false"); burger.setAttribute("aria-label","Menü megnyitása"); menu.classList.remove("open"); }
+  function toggleMenu(){
+    var open = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", String(!open));
+    burger.setAttribute("aria-label", open ? "Menü megnyitása" : "Menü bezárása");
+    menu.classList.toggle("open", !open);
+  }
+  burger.addEventListener("click", toggleMenu);
+  menu.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", closeMenu); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeMenu(); });
+
+  /* Scroll reveal */
+  var reveals = document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("is-visible"); io.unobserve(en.target); } });
+    }, {threshold:.1, rootMargin:"0px 0px -40px 0px"});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else { reveals.forEach(function(el){ el.classList.add("is-visible"); }); }
+
+  /* Lightbox for gallery */
+  var galFigs = Array.prototype.slice.call(document.querySelectorAll(".gal-grid figure"));
+  var lbox = document.getElementById("lbox");
+  var lboxImg = document.getElementById("lboxImg");
+  var lboxCounter = document.getElementById("lboxCounter");
+  var lboxClose = document.getElementById("lboxClose");
+  var lboxPrev = document.getElementById("lboxPrev");
+  var lboxNext = document.getElementById("lboxNext");
+  var cur = 0;
+  function openLbox(i){
+    cur = i;
+    var fig = galFigs[i]; var img = fig.querySelector("img");
+    lboxImg.src = img.src; lboxImg.alt = img.alt || "";
+    lboxCounter.textContent = (i+1) + " / " + galFigs.length;
+    lbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeLbox(){ lbox.classList.remove("open"); document.body.style.overflow = ""; }
+  function nav(d){ cur = (cur + d + galFigs.length) % galFigs.length; openLbox(cur); }
+  galFigs.forEach(function(f,i){
+    f.style.cursor = "zoom-in";
+    f.addEventListener("click", function(){ openLbox(i); });
+    f.setAttribute("role","button"); f.setAttribute("tabindex","0");
+    f.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openLbox(i); } });
+  });
+  lboxClose.addEventListener("click", closeLbox);
+  lboxPrev.addEventListener("click", function(){ nav(-1); });
+  lboxNext.addEventListener("click", function(){ nav(1); });
+  lbox.addEventListener("click", function(e){ if(e.target===lbox) closeLbox(); });
+  document.addEventListener("keydown", function(e){
+    if(!lbox.classList.contains("open")) return;
+    if(e.key==="Escape") closeLbox();
+    if(e.key==="ArrowLeft") nav(-1);
+    if(e.key==="ArrowRight") nav(1);
+  });
+
+  /* File upload UI */
+  var fileInput = document.getElementById("fileInput");
+  var uploadBox = document.getElementById("uploadBox");
+  var fileList = document.getElementById("fileList");
+  var attached = [];
+  function fmt(bytes){
+    if(bytes<1024) return bytes+" B";
+    if(bytes<1024*1024) return (bytes/1024).toFixed(0)+" KB";
+    return (bytes/(1024*1024)).toFixed(1)+" MB";
+  }
+  function render(){
+    fileList.innerHTML = "";
+    attached.forEach(function(f,i){
+      var row = document.createElement("div");
+      row.className = "uf";
+      var name = document.createElement("span");
+      name.textContent = f.name + " (" + fmt(f.size) + ")";
+      var rm = document.createElement("button");
+      rm.type = "button"; rm.textContent = "×"; rm.setAttribute("aria-label","Eltávolítás: "+f.name);
+      rm.addEventListener("click", function(){ attached.splice(i,1); render(); syncInput(); });
+      row.appendChild(name); row.appendChild(rm);
+      fileList.appendChild(row);
+    });
+  }
+  function syncInput(){
+    if(typeof DataTransfer !== "undefined"){
+      var dt = new DataTransfer();
+      attached.forEach(function(f){ dt.items.add(f); });
+      fileInput.files = dt.files;
+    }
+  }
+  fileInput.addEventListener("change", function(e){
+    Array.prototype.forEach.call(e.target.files, function(f){ attached.push(f); });
+    render(); syncInput();
+  });
+  ["dragenter","dragover"].forEach(function(ev){
+    uploadBox.addEventListener(ev, function(e){ e.preventDefault(); uploadBox.classList.add("drag"); });
+  });
+  ["dragleave","drop"].forEach(function(ev){
+    uploadBox.addEventListener(ev, function(e){ e.preventDefault(); uploadBox.classList.remove("drag"); });
+  });
+  uploadBox.addEventListener("drop", function(e){
+    if(e.dataTransfer && e.dataTransfer.files){
+      Array.prototype.forEach.call(e.dataTransfer.files, function(f){
+        if(/^image\//.test(f.type) || /\.(jpe?g|png|heic|webp)$/i.test(f.name)) attached.push(f);
+      });
+      render(); syncInput();
+    }
+  });
+  uploadBox.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); fileInput.click(); } });
+
+  /* Form validation */
+  var form = document.getElementById("contactForm");
+  var success = document.getElementById("formSuccess");
+  var gdprLabel = document.getElementById("gdprLabel");
+  var gdpr = document.getElementById("gdpr");
+  function validateField(input){
+    var field = input.closest(".field"); if(!field) return true;
+    var v = (input.value||"").trim(); var ok = true;
+    if(input.hasAttribute("required") && !v) ok = false;
+    if(ok && input.type==="email" && v){ ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+    if(ok && input.id==="phone" && v){ ok = v.replace(/[^0-9]/g,"").length >= 6; }
+    field.classList.toggle("invalid", !ok);
+    return ok;
+  }
+  form.querySelectorAll("input,select,textarea").forEach(function(input){
+    if(input.type==="file"||input.type==="checkbox") return;
+    input.addEventListener("blur", function(){ validateField(input); });
+    input.addEventListener("input", function(){ if(input.closest(".field").classList.contains("invalid")) validateField(input); });
+  });
+  gdpr.addEventListener("change", function(){ gdprLabel.classList.toggle("invalid", !gdpr.checked); });
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var firstInvalid = null, allOk = true;
+    form.querySelectorAll("input,select,textarea").forEach(function(input){
+      if(input.type==="file"||input.type==="checkbox") return;
+      var ok = validateField(input);
+      if(!ok && !firstInvalid){ firstInvalid = input; allOk = false; }
+    });
+    if(!gdpr.checked){ gdprLabel.classList.add("invalid"); if(!firstInvalid) firstInvalid = gdpr; allOk = false; }
+    if(!allOk){ if(firstInvalid) firstInvalid.focus(); success.classList.remove("show"); return; }
+    success.classList.add("show"); form.reset(); attached = []; render();
+    success.scrollIntoView({behavior: reduce ? "auto":"smooth", block:"center"});
+  });
+})();
+</script>
+</body>
+</html>
