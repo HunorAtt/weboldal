@@ -248,6 +248,25 @@ h1,h2,h3,h4,p{margin:0}
   background:linear-gradient(to top,rgba(10,42,107,.85),rgba(10,42,107,0))}
 
 /* =============================================
+   STATS
+   ============================================= */
+.stats{background:var(--bg-2)}
+.stats-inner{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:clamp(1.8rem,4vw,2.8rem);display:grid;gap:1.6rem;grid-template-columns:repeat(2,1fr);
+  box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stats-inner::before{content:"";position:absolute;inset:0;opacity:.7;pointer-events:none;
+  background:radial-gradient(55% 120% at 0% 0%,rgba(30,86,214,.07),transparent 60%),
+             radial-gradient(55% 120% at 100% 100%,rgba(255,106,26,.07),transparent 60%)}
+@media(min-width:768px){.stats-inner{grid-template-columns:repeat(4,1fr)}}
+.stat{text-align:center;position:relative;z-index:1}
+.stat .num{font-size:clamp(2.2rem,6vw,3rem);font-weight:900;line-height:1;letter-spacing:-.02em;
+  background:linear-gradient(180deg,#2e6dec 0%,#14307a 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{color:var(--fg-muted);font-size:.92rem;margin-top:.55rem;font-weight:600}
+
+/* Smooth anchor landing under sticky header */
+section[id]{scroll-margin-top:92px}
+
+/* =============================================
    GUARANTEE
    ============================================= */
 .guarantee{background:#fff}
@@ -397,6 +416,11 @@ h1,h2,h3,h4,p{margin:0}
   color:#15803d;padding:.95rem 1rem;border-radius:10px;font-weight:600;margin-top:1rem}
 .form-success.show{display:flex}
 .form-success svg{width:22px;height:22px;flex:none}
+.form-error{display:none;align-items:center;gap:.7rem;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.4);
+  color:#b91c1c;padding:.95rem 1rem;border-radius:10px;font-weight:600;margin-top:1rem}
+.form-error.show{display:flex}
+.form-error svg{width:22px;height:22px;flex:none}
+.btn[disabled]{opacity:.7;cursor:progress}
 .form-note{font-size:.8rem;color:var(--fg-dim);margin-top:.4rem}
 
 /* =============================================
@@ -464,9 +488,9 @@ h1,h2,h3,h4,p{margin:0}
       <a href="#gyik">GYIK</a>
     </nav>
     <div class="nav-right">
-      <a class="nav-phone" href="tel:+36000000000" aria-label="Telefonhívás">
+      <a class="nav-phone" href="tel:+36203439576" aria-label="Telefonhívás">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>[TELEFONSZÁM]</span>
+        <span>+36 20 343 9576</span>
       </a>
       <button class="hamburger" id="hamburger" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobileMenu">
         <svg class="menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -506,7 +530,7 @@ h1,h2,h3,h4,p{margin:0}
           Ajánlatot kérek
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="btn btn-ghost btn-lg" href="tel:+36000000000">
+        <a class="btn btn-ghost btn-lg" href="tel:+36203439576">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Hívás most
         </a>
@@ -615,9 +639,12 @@ h1,h2,h3,h4,p{margin:0}
         </div>
       </article>
 
-      <article class="svc no-img orange reveal">
+      <article class="svc orange reveal">
+        <div class="svc-img">
+          <img src="kepek/kep21.png" alt="Falra szerelt gázkonvektor ablak alatt, bekötött gázvezetékkel" loading="lazy" />
+          <div class="svc-img-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9c1 1.5-1 2.5 0 4M12 9c1 1.5-1 2.5 0 4M17 9c1 1.5-1 2.5 0 4"/></svg></div>
+        </div>
         <div class="svc-body">
-          <div class="svc-icon-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9c1 1.5-1 2.5 0 4M12 9c1 1.5-1 2.5 0 4M17 9c1 1.5-1 2.5 0 4"/></svg></div>
           <h3>Gázkonvektor telepítés és karbantartás</h3>
           <p>Gázkonvektorok felszerelése, tisztítása és javítása a biztonságos, hatékony fűtésért.</p>
         </div>
@@ -654,11 +681,14 @@ h1,h2,h3,h4,p{margin:0}
         </div>
       </article>
 
-      <article class="svc no-img reveal">
+      <article class="svc orange reveal">
+        <div class="svc-img">
+          <img src="kepek/kep20.png" alt="Professzionális duguláselhárító gép spirállal, fürdőszobai lefolyó tisztításához" loading="lazy" />
+          <div class="svc-img-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6a4 4 0 0 0 4 4h4a4 4 0 0 1 4 4v2"/><path d="M16 8h4M18 6v4"/><circle cx="6" cy="4" r="2"/></svg></div>
+        </div>
         <div class="svc-body">
-          <div class="svc-icon-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6a4 4 0 0 0 4 4h4a4 4 0 0 1 4 4v2"/><path d="M16 8h4M18 6v4"/><circle cx="6" cy="4" r="2"/></svg></div>
           <h3>Duguláselhárítás</h3>
-          <p>Eldugult lefolyók és csatornák gyors, tiszta megszüntetése modern eszközökkel.</p>
+          <p>Eldugult lefolyók és csatornák gyors, tiszta megszüntetése modern, professzionális eszközökkel.</p>
         </div>
       </article>
 
@@ -686,12 +716,31 @@ h1,h2,h3,h4,p{margin:0}
     </div>
     <div class="gal-grid">
       <figure class="reveal" data-lb="0"><img src="kepek/kep1.jpg" alt="Kültéri klíma telepítés szerszámkészlettel"><figcaption>Klíma telepítés</figcaption></figure>
-      <figure class="reveal" data-lb="1"><img src="kepek/kep2.jpg" alt="Falra szerelt klíma kültéri egység"><figcaption>Kültéri egység szerelése</figcaption></figure>
-      <figure class="reveal" data-lb="2"><img src="kepek/kep3.jpg" alt="Több klímaegység családi házon"><figcaption>Több helyiséges klimatizálás</figcaption></figure>
-      <figure class="reveal" data-lb="3"><img src="kepek/kep5.jpg" alt="Szakember karbantartást végez hőszivattyús rendszeren"><figcaption>Hőszivattyú karbantartás</figcaption></figure>
-      <figure class="reveal" data-lb="4"><img src="kepek/kep6.jpg" alt="Két Vaillant gázkazán szerelése csőhálózattal"><figcaption>Gázkazán &amp; csőszerelés</figcaption></figure>
-      <figure class="reveal" data-lb="5"><img src="kepek/kep7.jpg" alt="Bosch fali gázkazán telepítés"><figcaption>Bosch gázkazán</figcaption></figure>
-      <figure class="reveal" data-lb="6"><img src="kepek/kep8.jpg" alt="Professzionálisan szerelt elektromos kapcsolószekrény"><figcaption>Elektromos kapcsolószekrény</figcaption></figure>
+      <figure class="reveal" data-lb="1"><img src="kepek/kep19.jpg" alt="Klíma beüzemelése – vákuumozás Testo mérőműszerrel"><figcaption>Klíma beüzemelés &amp; vákuumozás</figcaption></figure>
+      <figure class="reveal" data-lb="2"><img src="kepek/kep17.jpg" alt="Beltéri klíma egység felújított szobában"><figcaption>Beltéri egység telepítése</figcaption></figure>
+      <figure class="reveal" data-lb="3"><img src="kepek/kep3.jpg" alt="Több klímaegység családi házon"><figcaption>Több helyiséges klimatizálás</figcaption></figure>
+      <figure class="reveal" data-lb="4"><img src="kepek/kep12.jpg" alt="GREE klíma kültéri egység"><figcaption>Kültéri egység szerelése</figcaption></figure>
+      <figure class="reveal" data-lb="5"><img src="kepek/kep6.jpg" alt="Két Vaillant gázkazán szerelése csőhálózattal"><figcaption>Gázkazán &amp; csőszerelés</figcaption></figure>
+      <figure class="reveal" data-lb="6"><img src="kepek/kep18.jpg" alt="Immergas fali gázkazán telepítése"><figcaption>Gázkazán telepítés</figcaption></figure>
+      <figure class="reveal" data-lb="7"><img src="kepek/kep11.jpg" alt="Bosch fali gázkazán telepítés"><figcaption>Fali gázkazán csere</figcaption></figure>
+      <figure class="reveal" data-lb="8"><img src="kepek/kep16.jpg" alt="Fűtési rendszer bekötése, kazán csőhálózat szennyfogóval"><figcaption>Fűtési rendszer bekötése</figcaption></figure>
+      <figure class="reveal" data-lb="9"><img src="kepek/kep10.jpg" alt="Gázüzemű vízmelegítő szerelése"><figcaption>Vízmelegítő szerelés</figcaption></figure>
+      <figure class="reveal" data-lb="10"><img src="kepek/kep9.jpg" alt="Radiátor szerelése felújítás alatt álló helyiségben"><figcaption>Radiátor csere</figcaption></figure>
+      <figure class="reveal" data-lb="11"><img src="kepek/kep5.jpg" alt="Szakember karbantartást végez hőszivattyús rendszeren"><figcaption>Hőszivattyú karbantartás</figcaption></figure>
+      <figure class="reveal" data-lb="12"><img src="kepek/kep14.jpg" alt="Schneider elektromos elosztószekrény szerelése"><figcaption>Elektromos elosztó</figcaption></figure>
+      <figure class="reveal" data-lb="13"><img src="kepek/kep8.jpg" alt="Professzionálisan szerelt elektromos kapcsolószekrény"><figcaption>Elektromos kapcsolószekrény</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section stats">
+  <div class="container">
+    <div class="stats-inner reveal">
+      <div class="stat"><div class="num" data-count="15" data-suffix="+">0</div><div class="lbl">Év tapasztalat</div></div>
+      <div class="stat"><div class="num" data-count="1200" data-suffix="+">0</div><div class="lbl">Elvégzett munka</div></div>
+      <div class="stat"><div class="num" data-count="24" data-suffix="ó">0</div><div class="lbl">Gyors visszahívás</div></div>
+      <div class="stat"><div class="num" data-count="100" data-suffix="%">0</div><div class="lbl">Garancia a munkára</div></div>
     </div>
   </div>
 </section>
@@ -827,7 +876,7 @@ h1,h2,h3,h4,p{margin:0}
         <div class="proc-n">1</div>
         <div class="proc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
         <h3>Hívás vagy ajánlatkérés</h3>
-        <p>Hívja a [TELEFONSZÁM] számot, vagy küldje el az űrlapot fotóval – röviden egyeztetjük az igényeit.</p>
+        <p>Hívja a +36 20 343 9576 számot, vagy küldje el az űrlapot fotóval – röviden egyeztetjük az igényeit.</p>
       </div>
       <div class="proc reveal">
         <div class="proc-n">2</div>
@@ -900,11 +949,11 @@ h1,h2,h3,h4,p{margin:0}
         <div class="li-list">
           <div class="li-item">
             <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-            <div><div class="li-lbl">Telefon</div><div class="li-val">[TELEFONSZÁM]</div></div>
+            <div><div class="li-lbl">Telefon</div><div class="li-val">+36 20 343 9576</div></div>
           </div>
           <div class="li-item">
             <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></div>
-            <div><div class="li-lbl">E-mail</div><div class="li-val">[EMAIL CÍM]</div></div>
+            <div><div class="li-lbl">E-mail</div><div class="li-val"><a href="mailto:hunoratt@gmail.com" style="color:#fff">hunoratt@gmail.com</a></div></div>
           </div>
           <div class="li-item">
             <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -916,9 +965,9 @@ h1,h2,h3,h4,p{margin:0}
           </div>
         </div>
 
-        <a class="li-call" href="tel:+36000000000" aria-label="Telefonhívás indítása">
+        <a class="li-call" href="tel:+36203439576" aria-label="Telefonhívás indítása">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Hívás most: [TELEFONSZÁM]
+          Hívás most: +36 20 343 9576
         </a>
 
         <div class="li-tags">
@@ -928,6 +977,8 @@ h1,h2,h3,h4,p{margin:0}
 
       <!-- Form -->
       <form class="lead-form reveal" id="contactForm" novalidate>
+        <!-- Web3Forms honeypot (spam védelem) -->
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
         <h3>Ajánlatot kérek</h3>
         <p class="fhint">A <span style="color:var(--orange)">*</span> jelölt mezők kitöltése kötelező. Csatolhat fotót is – sokszor már a kép alapján is tudunk segíteni.</p>
 
@@ -995,7 +1046,11 @@ h1,h2,h3,h4,p{margin:0}
 
         <div class="form-success" id="formSuccess" role="status" aria-live="polite">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
-          Köszönjük! Üzenetét megkaptuk, telefonon vagy e-mailben hamarosan jelentkezünk. <em style="opacity:.8;font-style:normal">(Demó – nincs háttér-küldés bekötve.)</em>
+          Köszönjük! Ajánlatkérését elküldtük – hamarosan jelentkezünk telefonon vagy e-mailben.
+        </div>
+        <div class="form-error" id="formError" role="alert" aria-live="assertive">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+          <span id="formErrorMsg">Sajnos nem sikerült elküldeni. Kérjük, próbálja újra, vagy hívjon minket telefonon.</span>
         </div>
       </form>
     </div>
@@ -1025,8 +1080,8 @@ h1,h2,h3,h4,p{margin:0}
       </div>
       <div class="foot-col">
         <h5>Kapcsolat</h5>
-        <a href="tel:+36000000000">[TELEFONSZÁM]</a>
-        <a href="mailto:info@example.hu">[EMAIL CÍM]</a>
+        <a href="tel:+36203439576">+36 20 343 9576</a>
+        <a href="mailto:hunoratt@gmail.com">hunoratt@gmail.com</a>
         <li>[SZOLGÁLTATÁSI TERÜLET]</li>
         <li>Tóth Bendegúz E.V.</li>
       </div>
@@ -1038,7 +1093,7 @@ h1,h2,h3,h4,p{margin:0}
   </div>
 </footer>
 
-<a class="fab" href="tel:+36000000000" aria-label="Telefonhívás indítása">
+<a class="fab" href="tel:+36203439576" aria-label="Telefonhívás indítása">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
   Hívás
 </a>
@@ -1087,6 +1142,31 @@ h1,h2,h3,h4,p{margin:0}
     }, {threshold:.1, rootMargin:"0px 0px -40px 0px"});
     reveals.forEach(function(el){ io.observe(el); });
   } else { reveals.forEach(function(el){ el.classList.add("is-visible"); }); }
+
+  /* Stat count-up */
+  var counted = false;
+  function animateCounts(){
+    if(counted) return; counted = true;
+    document.querySelectorAll(".num[data-count]").forEach(function(el){
+      var target = parseInt(el.getAttribute("data-count"),10);
+      var suffix = el.getAttribute("data-suffix") || "";
+      if(reduce){ el.textContent = target + suffix; return; }
+      var start = null, dur = 1400;
+      function tick(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts-start)/dur, 1);
+        var eased = 1 - Math.pow(1-p, 3);
+        el.textContent = Math.round(target*eased) + suffix;
+        if(p<1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+  var statsEl = document.querySelector(".stats-inner");
+  if(statsEl && "IntersectionObserver" in window){
+    var sio = new IntersectionObserver(function(e){ if(e[0].isIntersecting){ animateCounts(); sio.disconnect(); } }, {threshold:.4});
+    sio.observe(statsEl);
+  } else { animateCounts(); }
 
   /* Lightbox for gallery */
   var galFigs = Array.prototype.slice.call(document.querySelectorAll(".gal-grid figure"));
@@ -1178,8 +1258,20 @@ h1,h2,h3,h4,p{margin:0}
   /* Form validation */
   var form = document.getElementById("contactForm");
   var success = document.getElementById("formSuccess");
+  var errorBox = document.getElementById("formError");
+  var errorMsg = document.getElementById("formErrorMsg");
   var gdprLabel = document.getElementById("gdprLabel");
   var gdpr = document.getElementById("gdpr");
+  var submitBtn = form.querySelector('button[type="submit"]');
+
+  /* ---------------------------------------------------------------
+     E-mail küldés háttérben (NEM nyit meg másik appot).
+     A Web3Forms ingyenes szolgáltatás továbbítja az üzenetet a
+     hunoratt@gmail.com címre. Szerezzen egy ingyenes hozzáférési
+     kulcsot a https://web3forms.com oldalon (csak az e-mail címet
+     kell megadni), majd illessze be ide:
+     --------------------------------------------------------------- */
+  var WEB3FORMS_ACCESS_KEY = "b757eb9b-0054-4689-a532-ac01c1981734";
   function validateField(input){
     var field = input.closest(".field"); if(!field) return true;
     var v = (input.value||"").trim(); var ok = true;
@@ -1205,8 +1297,50 @@ h1,h2,h3,h4,p{margin:0}
     });
     if(!gdpr.checked){ gdprLabel.classList.add("invalid"); if(!firstInvalid) firstInvalid = gdpr; allOk = false; }
     if(!allOk){ if(firstInvalid) firstInvalid.focus(); success.classList.remove("show"); return; }
-    success.classList.add("show"); form.reset(); attached = []; render();
-    success.scrollIntoView({behavior: reduce ? "auto":"smooth", block:"center"});
+
+    /* Send in the background via Web3Forms – no app opens */
+    var data = {
+      name: (document.getElementById("name").value || "").trim(),
+      service: (document.getElementById("service").value || "").trim(),
+      email: (document.getElementById("email").value || "").trim()
+    };
+    var fd = new FormData(form);
+    fd.append("access_key", WEB3FORMS_ACCESS_KEY);
+    fd.append("subject", "Új ajánlatkérés – " + (data.service || "Épületgépészet") + " – " + data.name);
+    fd.append("from_name", "Tóth Épületgépészet – weboldal");
+    if(data.email) fd.append("replyto", data.email);
+    if(attached.length){
+      fd.append("Csatolt fotók", attached.map(function(f){ return f.name; }).join(", "));
+    }
+
+    function showError(msg){
+      if(errorMsg && msg) errorMsg.textContent = msg;
+      errorBox.classList.add("show");
+      errorBox.scrollIntoView({behavior: reduce ? "auto":"smooth", block:"center"});
+    }
+
+    success.classList.remove("show");
+    errorBox.classList.remove("show");
+    var btnHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "Küldés folyamatban…";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: fd
+    }).then(function(res){ return res.json(); }).then(function(json){
+      submitBtn.disabled = false; submitBtn.innerHTML = btnHtml;
+      if(json && json.success){
+        success.classList.add("show"); form.reset(); attached = []; render();
+        success.scrollIntoView({behavior: reduce ? "auto":"smooth", block:"center"});
+      } else {
+        showError((json && json.message) ? json.message : null);
+      }
+    }).catch(function(){
+      submitBtn.disabled = false; submitBtn.innerHTML = btnHtml;
+      showError("Hálózati hiba történt. Kérjük, próbálja újra, vagy hívjon minket telefonon.");
+    });
   });
 })();
 </script>
