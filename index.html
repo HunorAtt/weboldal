@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tóth Épületgépészet – Klíma, Víz, Gáz, Fűtés, Villany | Tóth Bendegúz E.V.</title>
-<meta name="description" content="Tóth Bendegúz E.V. – Megbízható épületgépészet egy kézből: klíma, gázkazán, gázkonvektor, víz-gáz-fűtés, villanyszerelés, duguláselhárítás és hőszivattyú karbantartás. Gyors kiszállás, garanciával." />
+<title>Tóth Épületgépészet – Klíma, Víz, Gáz, Fűtés, Villany | Tóth Bendegúz</title>
+<meta name="description" content="Tóth Bendegúz – Megbízható épületgépészet egy kézből: klíma, gázkazán, gázkonvektor, víz-gáz-fűtés, villanyszerelés, duguláselhárítás és hőszivattyú karbantartás. Gyors kiszállás, garanciával." />
 <meta name="theme-color" content="#ffffff" />
 <link rel="icon" type="image/png" href="logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -391,20 +391,6 @@ section[id]{scroll-margin-top:92px}
 .row2{display:grid;gap:1.1rem}
 @media(min-width:560px){.row2{grid-template-columns:1fr 1fr}}
 
-/* File upload */
-.upload{border:1.5px dashed var(--border-strong);border-radius:12px;padding:1.2rem;background:var(--bg-2);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;
-  cursor:pointer;transition:border-color .2s,background .2s;position:relative}
-.upload:hover,.upload.drag{border-color:var(--blue);background:var(--blue-soft)}
-.upload input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
-.upload-i{width:42px;height:42px;border-radius:10px;background:#fff;border:1px solid var(--border);display:grid;place-items:center}
-.upload-i svg{width:22px;height:22px;color:var(--blue)}
-.upload-t{font-weight:700;color:var(--fg);font-size:.95rem}
-.upload-d{font-size:.8rem;color:var(--fg-muted)}
-.upload-files{margin-top:.7rem;display:flex;flex-direction:column;gap:.35rem}
-.upload-files .uf{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:.86rem;color:var(--fg);background:#fff;border:1px solid var(--border);border-radius:8px;padding:.4rem .6rem}
-.upload-files .uf button{color:var(--danger);font-weight:700;font-size:1rem;padding:.2rem .4rem;border-radius:6px}
-.upload-files .uf button:hover{background:rgba(220,38,38,.08)}
 
 .gdpr{display:flex;gap:.6rem;align-items:flex-start;margin:1rem 0 1.4rem;font-size:.88rem;color:var(--fg-muted)}
 .gdpr input{width:18px;height:18px;flex:none;margin-top:3px;accent-color:var(--blue)}
@@ -469,6 +455,75 @@ section[id]{scroll-margin-top:92px}
 .lbox-prev svg,.lbox-next svg,.lbox-close svg{width:24px;height:24px}
 .lbox-counter{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);color:#fff;font-weight:600;font-size:.92rem;
   background:rgba(0,0,0,.4);padding:.4rem 1rem;border-radius:100px}
+
+/* =============================================
+   LEGAL MODAL (Adatkezelési tájékoztató)
+   ============================================= */
+.legal-link{display:inline;background:none;border:0;padding:0;margin:0;font:inherit;color:var(--blue);
+  font-weight:700;text-decoration:underline;cursor:pointer}
+.legal-link:hover{color:var(--blue-deep)}
+.foot-legal{color:var(--fg-dim);font-size:.84rem}
+.foot-legal .legal-link{color:var(--fg-muted);font-weight:600}
+.foot-legal .legal-link:hover{color:var(--orange)}
+.lmodal{position:fixed;inset:0;z-index:210;background:rgba(7,15,31,.6);backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;
+  padding:clamp(1rem,4vw,3rem);opacity:0;transition:opacity .25s var(--ease);overflow-y:auto}
+.lmodal.open{display:flex;opacity:1}
+.lmodal-panel{background:#fff;border-radius:var(--radius-lg);max-width:780px;width:100%;margin:auto;
+  box-shadow:var(--shadow-lg);position:relative;transform:translateY(12px);transition:transform .25s var(--ease);
+  display:flex;flex-direction:column;max-height:calc(100vh - 2 * clamp(1rem,4vw,3rem))}
+.lmodal.open .lmodal-panel{transform:none}
+.lmodal-head{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);
+  padding:1.3rem clamp(1.3rem,4vw,2rem);display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  border-radius:var(--radius-lg) var(--radius-lg) 0 0;z-index:1}
+.lmodal-head h2{font-size:clamp(1.2rem,3vw,1.5rem);font-weight:900;letter-spacing:-.02em}
+.lmodal-close{flex:none;width:42px;height:42px;border-radius:10px;border:1.5px solid var(--border-strong);
+  background:#fff;color:var(--fg);display:grid;place-items:center;transition:background .2s,border-color .2s}
+.lmodal-close:hover{background:var(--bg-2);border-color:var(--blue);color:var(--blue)}
+.lmodal-close svg{width:22px;height:22px}
+.lmodal-body{padding:clamp(1.3rem,4vw,2rem);overflow-y:auto;color:var(--fg-muted);font-size:.95rem;line-height:1.65}
+.lmodal-body h3{font-size:1.05rem;font-weight:800;color:var(--fg);margin:1.6rem 0 .5rem;letter-spacing:-.01em}
+.lmodal-body h3:first-child{margin-top:0}
+.lmodal-body p{margin:.5rem 0}
+.lmodal-body ul{margin:.5rem 0;padding-left:1.2rem;list-style:disc}
+.lmodal-body li{margin:.3rem 0}
+.lmodal-body a{color:var(--blue);font-weight:600;text-decoration:underline}
+.lmodal-body .ph{background:var(--orange-soft);color:var(--orange-deep);font-weight:700;
+  padding:.05rem .35rem;border-radius:5px;border:1px dashed rgba(255,106,26,.45);font-size:.9em}
+.lmodal-body .legal-meta{font-size:.82rem;color:var(--fg-dim);margin-top:1.8rem;padding-top:1rem;border-top:1px solid var(--border)}
+.lmodal-body table{width:100%;border-collapse:collapse;margin:.6rem 0;font-size:.9rem}
+.lmodal-body th,.lmodal-body td{border:1px solid var(--border);padding:.55rem .65rem;text-align:left;vertical-align:top}
+.lmodal-body th{background:var(--bg-2);font-weight:700;color:var(--fg)}
+
+/* Call chooser modal */
+.lmodal.call{align-items:center}
+.lmodal.call .lmodal-panel{max-width:430px;padding:clamp(1.5rem,5vw,2.2rem);text-align:center}
+.call-ico{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;margin:0 auto 1rem;
+  background:var(--blue-soft);border:1px solid rgba(30,86,214,.18)}
+.call-ico svg{width:32px;height:32px;color:var(--blue)}
+.call-modal-title{font-size:1.4rem;font-weight:900;letter-spacing:-.02em;color:var(--fg)}
+.call-modal-sub{color:var(--fg-muted);font-size:.95rem;margin-top:.45rem}
+.call-x{position:absolute;top:.9rem;right:.9rem;width:40px;height:40px;border-radius:10px;border:1.5px solid var(--border-strong);
+  background:#fff;color:var(--fg);display:grid;place-items:center;transition:background .2s,border-color .2s,color .2s}
+.call-x:hover{background:var(--bg-2);border-color:var(--blue);color:var(--blue)}
+.call-x svg{width:20px;height:20px}
+.call-opts{display:flex;flex-direction:column;gap:.8rem;margin-top:1.6rem}
+.call-opt{display:flex;align-items:center;gap:.95rem;text-align:left;padding:1rem 1.1rem;border-radius:14px;
+  border:1.5px solid var(--border);background:#fff;transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s}
+.call-opt:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.call-opt-i{width:46px;height:46px;flex:none;border-radius:12px;display:grid;place-items:center;color:#fff}
+.call-opt-i svg{width:24px;height:24px}
+.call-opt.urgent{border-color:rgba(255,106,26,.35);background:var(--orange-soft)}
+.call-opt.urgent:hover{border-color:var(--orange)}
+.call-opt.urgent .call-opt-i{background:var(--orange)}
+.call-opt.normal .call-opt-i{background:var(--blue)}
+.call-opt-txt{flex:1;min-width:0}
+.call-opt-lbl{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-muted)}
+.call-opt.urgent .call-opt-lbl{color:var(--orange-deep)}
+.call-opt-num{font-size:1.18rem;font-weight:900;color:var(--fg);letter-spacing:-.01em;margin-top:.1rem;white-space:nowrap}
+.call-opt-sub{font-size:.8rem;color:var(--fg-dim);margin-top:.1rem}
+.call-opt-arrow{flex:none;color:var(--fg-dim)}
+.call-opt-arrow svg{width:20px;height:20px}
 </style>
 </head>
 <body>
@@ -478,7 +533,7 @@ section[id]{scroll-margin-top:92px}
 <header class="site-header" id="top">
   <div class="container nav">
     <a class="brand" href="#top" aria-label="Tóth Épületgépészet kezdőlap">
-      <img class="brand-logo" src="logo.png" alt="Tóth Épületgépészet – Tóth Bendegúz E.V." />
+      <img class="brand-logo" src="logo.png" alt="Tóth Épületgépészet – Tóth Bendegúz" />
     </a>
     <nav class="nav-links" aria-label="Fő navigáció">
       <a href="#mikor">Mikor hívjon</a>
@@ -488,9 +543,9 @@ section[id]{scroll-margin-top:92px}
       <a href="#gyik">GYIK</a>
     </nav>
     <div class="nav-right">
-      <a class="nav-phone" href="tel:+36203439576" aria-label="Telefonhívás">
+      <a class="nav-phone" href="tel:+36305316346" data-call-open aria-label="Telefonszámok megnyitása">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>+36 20 343 9576</span>
+        <span>+36 30 531 6346</span>
       </a>
       <button class="hamburger" id="hamburger" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobileMenu">
         <svg class="menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -530,7 +585,7 @@ section[id]{scroll-margin-top:92px}
           Ajánlatot kérek
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="btn btn-ghost btn-lg" href="tel:+36203439576">
+        <a class="btn btn-ghost btn-lg" href="tel:+36305316346" data-call-open>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Hívás most
         </a>
@@ -737,7 +792,7 @@ section[id]{scroll-margin-top:92px}
 <section class="section stats">
   <div class="container">
     <div class="stats-inner reveal">
-      <div class="stat"><div class="num" data-count="15" data-suffix="+">0</div><div class="lbl">Év tapasztalat</div></div>
+      <div class="stat"><div class="num" data-count="10" data-suffix="+">0</div><div class="lbl">Év tapasztalattal rendelkező munkatársaink</div></div>
       <div class="stat"><div class="num" data-count="1200" data-suffix="+">0</div><div class="lbl">Elvégzett munka</div></div>
       <div class="stat"><div class="num" data-count="24" data-suffix="ó">0</div><div class="lbl">Gyors visszahívás</div></div>
       <div class="stat"><div class="num" data-count="100" data-suffix="%">0</div><div class="lbl">Garancia a munkára</div></div>
@@ -876,7 +931,7 @@ section[id]{scroll-margin-top:92px}
         <div class="proc-n">1</div>
         <div class="proc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
         <h3>Hívás vagy ajánlatkérés</h3>
-        <p>Hívja a +36 20 343 9576 számot, vagy küldje el az űrlapot fotóval – röviden egyeztetjük az igényeit.</p>
+        <p>Hívja a +36 30 531 6346 számot, vagy küldje el az űrlapot – röviden egyeztetjük az igényeit.</p>
       </div>
       <div class="proc reveal">
         <div class="proc-n">2</div>
@@ -913,7 +968,7 @@ section[id]{scroll-margin-top:92px}
       </details>
       <details class="faq-item reveal">
         <summary class="faq-q">Milyen területeken vállalnak munkát?</summary>
-        <div class="faq-a">A [SZOLGÁLTATÁSI TERÜLET] területén vállalunk megbízásokat. Kérjük, hívás vagy ajánlatkérés során adja meg a pontos címet, hogy visszaigazolhassuk, ki tudunk-e szállni.</div>
+        <div class="faq-a">Budapest és Pest vármegye területén vállalunk megbízásokat. Kérjük, hívás vagy ajánlatkérés során adja meg a pontos címet, hogy visszaigazolhassuk, ki tudunk-e szállni.</div>
       </details>
       <details class="faq-item reveal">
         <summary class="faq-q">Adnak garanciát az elvégzett munkára?</summary>
@@ -921,7 +976,7 @@ section[id]{scroll-margin-top:92px}
       </details>
       <details class="faq-item reveal">
         <summary class="faq-q">Mit tehetek, ha nem tudom, mi a probléma?</summary>
-        <div class="faq-a">Semmi gond – írja le röviden a tüneteket (pl. „nem fűt a kazán”, „csöpög a csap a fürdőben”), és töltsön fel egy-két fotót az űrlapon keresztül. Ez alapján már sokszor előzetes diagnózist és árajánlatot is tudunk adni.</div>
+        <div class="faq-a">Semmi gond – írja le röviden a tüneteket (pl. „nem fűt a kazán”, „csöpög a csap a fürdőben”) az űrlapon vagy telefonon. Ez alapján már sokszor előzetes diagnózist és árajánlatot is tudunk adni.</div>
       </details>
       <details class="faq-item reveal">
         <summary class="faq-q">Hogyan tud fizetni?</summary>
@@ -936,7 +991,7 @@ section[id]{scroll-margin-top:92px}
   <div class="container">
     <div class="section-head reveal" style="margin-bottom:2.6rem">
       <span class="eyebrow">Ajánlatkérés</span>
-      <h2>Kérjen <span style="color:var(--orange)">ingyenes árajánlatot</span> – akár fotóval</h2>
+      <h2>Kérjen <span style="color:var(--orange)">ingyenes árajánlatot</span></h2>
       <p>Töltse ki az űrlapot vagy hívjon minket – általában 24 órán belül visszajelzünk.</p>
     </div>
 
@@ -944,30 +999,30 @@ section[id]{scroll-margin-top:92px}
       <!-- Info column -->
       <aside class="lead-info reveal">
         <h3>Tóth Épületgépészet</h3>
-        <p>Tóth Bendegúz E.V. – épületgépészeti szakember, akire nyugodt szívvel bízhatja otthonát.</p>
+        <p>Tóth Bendegúz – épületgépészeti szakember, akire nyugodt szívvel bízhatja otthonát.</p>
 
         <div class="li-list">
           <div class="li-item">
             <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-            <div><div class="li-lbl">Telefon</div><div class="li-val">+36 20 343 9576</div></div>
+            <div><div class="li-lbl">Telefon</div><div class="li-val">+36 30 531 6346</div></div>
           </div>
           <div class="li-item">
             <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></div>
-            <div><div class="li-lbl">E-mail</div><div class="li-val"><a href="mailto:hunoratt@gmail.com" style="color:#fff">hunoratt@gmail.com</a></div></div>
+            <div><div class="li-lbl">E-mail</div><div class="li-val"><a href="mailto:tothepuletgepeszet2026@gmail.com" style="color:#fff">tothepuletgepeszet2026@gmail.com</a></div></div>
           </div>
           <div class="li-item">
             <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div><div class="li-lbl">Szolgáltatási terület</div><div class="li-val">[SZOLGÁLTATÁSI TERÜLET]</div></div>
+            <div><div class="li-lbl">Szolgáltatási terület</div><div class="li-val">Budapest és Pest vármegye</div></div>
           </div>
           <div class="li-item">
             <div class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <div><div class="li-lbl">Nyitvatartás</div><div class="li-val">H–P: [IDŐPONT] &middot; Sürgős: [ELÉRHETŐSÉG]</div></div>
+            <div><div class="li-lbl">Nyitvatartás</div><div class="li-val">0–24 &middot; Sürgős: <a href="tel:+36703728082" style="color:#fff">+36 70 372 8082</a></div></div>
           </div>
         </div>
 
-        <a class="li-call" href="tel:+36203439576" aria-label="Telefonhívás indítása">
+        <a class="li-call" href="tel:+36305316346" data-call-open aria-label="Telefonszámok megnyitása">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Hívás most: +36 20 343 9576
+          Hívás most: +36 30 531 6346
         </a>
 
         <div class="li-tags">
@@ -980,7 +1035,7 @@ section[id]{scroll-margin-top:92px}
         <!-- Web3Forms honeypot (spam védelem) -->
         <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
         <h3>Ajánlatot kérek</h3>
-        <p class="fhint">A <span style="color:var(--orange)">*</span> jelölt mezők kitöltése kötelező. Csatolhat fotót is – sokszor már a kép alapján is tudunk segíteni.</p>
+        <p class="fhint">A <span style="color:var(--orange)">*</span> jelölt mezők kitöltése kötelező. Írja le röviden a problémát, és hamarosan jelentkezünk.</p>
 
         <div class="row2">
           <div class="field">
@@ -1018,17 +1073,6 @@ section[id]{scroll-margin-top:92px}
         </div>
 
         <div class="field">
-          <label>Fotó csatolása (opcionális)</label>
-          <label class="upload" id="uploadBox" tabindex="0">
-            <input id="fileInput" type="file" name="photos" accept="image/jpeg,image/png,image/heic,image/webp" multiple />
-            <div class="upload-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg></div>
-            <div class="upload-t">Húzza ide a képeket vagy kattintson a feltöltéshez</div>
-            <div class="upload-d">JPG, PNG, HEIC vagy WEBP &middot; akár több fájl</div>
-          </label>
-          <div class="upload-files" id="fileList" aria-live="polite"></div>
-        </div>
-
-        <div class="field">
           <label for="message">Üzenet / probléma leírása</label>
           <textarea id="message" name="message" placeholder="Írja le röviden, miben segíthetünk – pl. típus, mióta áll fenn a hiba, hány készüléket érint…"></textarea>
           <p class="form-note">Adatait kizárólag az árajánlat elkészítéséhez használjuk fel.</p>
@@ -1036,7 +1080,7 @@ section[id]{scroll-margin-top:92px}
 
         <label class="gdpr" id="gdprLabel">
           <input id="gdpr" type="checkbox" required />
-          <span>Elfogadom az <a href="#">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy az ajánlatkérés érdekében kapcsolatba lépjenek velem. <span style="color:var(--orange)">*</span></span>
+          <span>Elfogadom az <button type="button" class="legal-link" data-legal-open>adatkezelési tájékoztatót</button>, és hozzájárulok, hogy az ajánlatkérés érdekében kapcsolatba lépjenek velem. <span style="color:var(--orange)">*</span></span>
         </label>
 
         <button class="btn btn-orange btn-block btn-lg" type="submit">
@@ -1080,23 +1124,227 @@ section[id]{scroll-margin-top:92px}
       </div>
       <div class="foot-col">
         <h5>Kapcsolat</h5>
-        <a href="tel:+36203439576">+36 20 343 9576</a>
-        <a href="mailto:hunoratt@gmail.com">hunoratt@gmail.com</a>
-        <li>[SZOLGÁLTATÁSI TERÜLET]</li>
-        <li>Tóth Bendegúz E.V.</li>
+        <a href="tel:+36305316346">+36 30 531 6346</a>
+        <a href="mailto:tothepuletgepeszet2026@gmail.com">tothepuletgepeszet2026@gmail.com</a>
+        <li>Budapest és Pest vármegye</li>
+        <li>Tóth Bendegúz</li>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="year">2026</span> Tóth Épületgépészet – Tóth Bendegúz E.V. Minden jog fenntartva.</span>
+      <span class="foot-legal">© <span id="year">2026</span> Tóth Épületgépészet – Tóth Bendegúz. Minden jog fenntartva. &nbsp;·&nbsp; <button type="button" class="legal-link" data-impr-open>Impresszum</button> &nbsp;·&nbsp; <button type="button" class="legal-link" data-legal-open>Adatkezelési tájékoztató</button></span>
       <span class="foot-tagline">MEGBÍZHATÓSÁG <b>&bull;</b> MINŐSÉG <b>&bull;</b> SZAKÉRTELEM</span>
     </div>
   </div>
 </footer>
 
-<a class="fab" href="tel:+36203439576" aria-label="Telefonhívás indítása">
+<a class="fab" href="tel:+36305316346" data-call-open aria-label="Telefonszámok megnyitása">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
   Hívás
 </a>
+
+<!-- HÍVÁS VÁLASZTÓ (MODAL) -->
+<div class="lmodal call" id="callModal" role="dialog" aria-modal="true" aria-labelledby="callTitle">
+  <div class="lmodal-panel">
+    <button class="call-x lmodal-close" type="button" aria-label="Bezárás">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="call-ico">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </div>
+    <h2 class="call-modal-title" id="callTitle">Sürgős esetről van szó?</h2>
+    <p class="call-modal-sub">Válassza ki, melyik számot hívja.</p>
+    <div class="call-opts">
+      <a class="call-opt urgent" href="tel:+36703728082">
+        <span class="call-opt-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+        <span class="call-opt-txt">
+          <span class="call-opt-lbl">Sürgős / vészhelyzet</span>
+          <span class="call-opt-num">+36 70 372 8082</span>
+          <span class="call-opt-sub">0–24 elérhető – pl. vízkár, gázprobléma, fűtéskimaradás</span>
+        </span>
+        <span class="call-opt-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="call-opt normal" href="tel:+36305316346">
+        <span class="call-opt-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span class="call-opt-txt">
+          <span class="call-opt-lbl">Általános hívás</span>
+          <span class="call-opt-num">+36 30 531 6346</span>
+          <span class="call-opt-sub">Ajánlatkérés, időpont-egyeztetés, kérdések</span>
+        </span>
+        <span class="call-opt-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- IMPRESSZUM (MODAL) -->
+<div class="lmodal" id="imprModal" role="dialog" aria-modal="true" aria-labelledby="imprTitle">
+  <div class="lmodal-panel">
+    <div class="lmodal-head">
+      <h2 id="imprTitle">Impresszum</h2>
+      <button class="lmodal-close" id="imprClose" type="button" aria-label="Bezárás">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="lmodal-body" id="imprBody" tabindex="-1">
+      <p>A jelen Impresszum a weboldal (a továbbiakban: <strong>Weboldal</strong>) üzemeltetőjének az elektronikus kereskedelmi szolgáltatások, valamint az információs társadalommal összefüggő szolgáltatások egyes kérdéseiről szóló 2001. évi CVIII. törvény (<strong>Elkertv.</strong>) szerinti adatait tartalmazza.</p>
+
+      <h3>1. A szolgáltató (üzemeltető) adatai</h3>
+      <p>
+        <strong>Név:</strong> Tóth Bendegúz egyéni vállalkozó<br />
+        <strong>Márkanév:</strong> Tóth Épületgépészet<br />
+        <strong>Székhely:</strong> <span class="ph">[SZÉKHELY CÍME]</span><br />
+        <strong>Nyilvántartási szám:</strong> <span class="ph">[EGYÉNI VÁLLALKOZÓI NYILVÁNTARTÁSI SZÁM]</span><br />
+        <strong>Adószám:</strong> <span class="ph">[ADÓSZÁM]</span><br />
+        <strong>Szakmagyakorlási / regisztrációs szám:</strong> <span class="ph">[SZAKMAI / GÁZSZERELŐI ENGEDÉLY SZÁMA – ha releváns]</span><br />
+        <strong>Telefon:</strong> <a href="tel:+36305316346">+36 30 531 6346</a><br />
+        <strong>E-mail:</strong> <a href="mailto:tothepuletgepeszet2026@gmail.com">tothepuletgepeszet2026@gmail.com</a><br />
+        <strong>Szolgáltatási terület:</strong> Budapest és Pest vármegye
+      </p>
+
+      <h3>2. Tevékenységi kör</h3>
+      <p>Épületgépészeti szolgáltatások: klíma telepítés és karbantartás, víz-, gáz- és fűtésszerelés, gázkazán és gázkonvektor telepítés és karbantartás, villanyszerelés és korszerűsítés, duguláselhárítás, valamint hőszivattyú karbantartás.</p>
+
+      <h3>3. Tárhelyszolgáltató adatai</h3>
+      <p>
+        <strong>Név:</strong> <span class="ph">[TÁRHELYSZOLGÁLTATÓ NEVE]</span><br />
+        <strong>Székhely / cím:</strong> <span class="ph">[TÁRHELYSZOLGÁLTATÓ CÍME]</span><br />
+        <strong>Elérhetőség:</strong> <span class="ph">[TÁRHELYSZOLGÁLTATÓ E-MAIL / TELEFON]</span>
+      </p>
+
+      <h3>4. Panaszkezelés, fogyasztóvédelem</h3>
+      <p>A szolgáltatással kapcsolatos panaszát a fenti telefonszámon vagy e-mail címen jelezheti, amelyet legkésőbb a vonatkozó jogszabályokban előírt határidőn belül kivizsgálunk és megválaszolunk.</p>
+      <p>Amennyiben a panasz kezelésével nem ért egyet, fogyasztóként az alábbi szervekhez fordulhat:</p>
+      <ul>
+        <li><strong>Fogyasztóvédelmi hatóság:</strong> a lakóhely szerint illetékes fővárosi/vármegyei kormányhivatal fogyasztóvédelmi feladatkörében eljáró járási (kerületi) hivatala.</li>
+        <li><strong>Békéltető testület:</strong> a fogyasztó lakóhelye szerint illetékes békéltető testület (a testületek elérhetősége: <a href="https://bekeltetes.hu" target="_blank" rel="noopener">bekeltetes.hu</a>). A szolgáltató székhelye szerinti testület:<br />
+          Budapesti Békéltető Testület<br />
+          Cím: 1016 Budapest, Krisztina krt. 99. III. em. 310.<br />
+          Levelezési cím: 1253 Budapest, Pf.: 10.<br />
+          Telefon: +36 1 488 2131<br />
+          E-mail: <a href="mailto:bekelteto.testulet@bkik.hu">bekelteto.testulet@bkik.hu</a>
+        </li>
+        <li><strong>Online vitarendezési platform (ODR):</strong> <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a></li>
+      </ul>
+
+      <h3>5. Szerzői jogok</h3>
+      <p>A Weboldal teljes tartalma (szövegek, fényképek, grafikai elemek, logó, elrendezés) szerzői jogi védelem alatt áll. A tartalom vagy annak része – az üzemeltető előzetes írásbeli engedélye nélkül – nem másolható, nem terjeszthető és nem hasznosítható.</p>
+
+      <h3>6. Felelősség</h3>
+      <p>A Weboldalon közölt információk tájékoztató jellegűek, és nem minősülnek szerződéses ajánlatnak. A felelősség korlátozására vonatkozó részletes rendelkezéseket az <button type="button" class="legal-link" data-legal-open>Adatkezelési tájékoztató</button> „Jogi nyilatkozat" pontja tartalmazza.</p>
+
+      <p class="legal-meta">
+        Hatályos: <span class="ph">[HATÁLYBALÉPÉS DÁTUMA]</span> napjától.<br />
+        Üzemeltető: Tóth Bendegúz egyéni vállalkozó (Tóth Épületgépészet).
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ADATKEZELÉSI TÁJÉKOZTATÓ (MODAL) -->
+<div class="lmodal" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+  <div class="lmodal-panel">
+    <div class="lmodal-head">
+      <h2 id="legalTitle">Adatkezelési tájékoztató</h2>
+      <button class="lmodal-close" id="legalClose" type="button" aria-label="Bezárás">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="lmodal-body" id="legalBody" tabindex="-1">
+      <p>A jelen adatkezelési tájékoztató (a továbbiakban: <strong>Tájékoztató</strong>) az alábbi weboldal (a továbbiakban: <strong>Weboldal</strong>) használatával, valamint az azon keresztül történő kapcsolatfelvétellel és ajánlatkéréssel összefüggő személyesadat-kezelésről nyújt tájékoztatást. Az adatkezelés megfelel az Európai Parlament és a Tanács (EU) 2016/679 rendeletének (<strong>GDPR</strong>), valamint az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII. törvénynek (<strong>Infotv.</strong>).</p>
+
+      <h3>1. Az adatkezelő</h3>
+      <p>
+        <strong>Név:</strong> Tóth Bendegúz egyéni vállalkozó (Tóth Épületgépészet)<br />
+        <strong>Székhely:</strong> <span class="ph">[SZÉKHELY CÍME]</span><br />
+        <strong>Nyilvántartási szám:</strong> <span class="ph">[EGYÉNI VÁLLALKOZÓI NYILVÁNTARTÁSI SZÁM]</span><br />
+        <strong>Adószám:</strong> <span class="ph">[ADÓSZÁM]</span><br />
+        <strong>Telefon:</strong> <a href="tel:+36305316346">+36 30 531 6346</a><br />
+        <strong>E-mail:</strong> <a href="mailto:tothepuletgepeszet2026@gmail.com">tothepuletgepeszet2026@gmail.com</a><br />
+        <strong>Szolgáltatási terület:</strong> Budapest és Pest vármegye
+      </p>
+      <p>Az adatkezelő nem folytat olyan adatkezelést, amely adatvédelmi tisztviselő kijelölését tenné kötelezővé, ezért adatvédelmi tisztviselőt nem alkalmaz.</p>
+
+      <h3>2. A kezelt adatok köre, célja, jogalapja és időtartama</h3>
+      <table>
+        <thead>
+          <tr><th>Adatkezelés</th><th>Kezelt adatok</th><th>Cél</th><th>Jogalap</th><th>Időtartam</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ajánlatkérő / kapcsolatfelvételi űrlap</td>
+            <td>Név, telefonszám, e-mail cím, választott szolgáltatás, az üzenetben önként megadott adatok</td>
+            <td>Kapcsolatfelvétel, árajánlat készítése, a szolgáltatás egyeztetése és a szerződés előkészítése</td>
+            <td>GDPR 6. cikk (1) b) pont (a szerződés megkötését megelőző, az érintett kérésére történő lépések), illetve a) pont (önkéntes hozzájárulás)</td>
+            <td>A megkeresés lezárásától számított legfeljebb 1 év; szerződéskötés esetén a vonatkozó számviteli és adójogi megőrzési határidők szerint</td>
+          </tr>
+          <tr>
+            <td>Telefonos kapcsolatfelvétel</td>
+            <td>A hívás során önként megadott adatok (név, elérhetőség, az igény leírása)</td>
+            <td>Kapcsolatfelvétel, árajánlat, időpont-egyeztetés</td>
+            <td>GDPR 6. cikk (1) b) pont</td>
+            <td>A megkeresés lezárásáig, illetve a vonatkozó megőrzési határidőkig</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>A megjelölt (<span style="color:var(--orange);font-weight:700">*</span>) mezők kitöltése a kapcsolatfelvételhez szükséges. Az adatok megadása önkéntes; hiányában azonban előfordulhat, hogy a megkeresést nem tudjuk teljesíteni. Az érintett kizárólag a saját, vagy olyan személy adatait adhatja meg, akinek erre felhatalmazást adott.</p>
+
+      <h3>3. Adatfeldolgozók</h3>
+      <p>Az adatkezelő a fenti célok eléréséhez az alábbi adatfeldolgozók szolgáltatásait veszi igénybe:</p>
+      <ul>
+        <li><strong>Tárhelyszolgáltató:</strong> <span class="ph">[TÁRHELYSZOLGÁLTATÓ NEVE ÉS CÍME]</span> – a Weboldal és a hozzá kapcsolódó adatok tárolása.</li>
+        <li><strong>Web3Forms</strong> (web3forms.com) – az űrlapon megadott adatok továbbítása e-mailben az adatkezelő részére. A szolgáltatás szerverei részben az Európai Unión kívül (Egyesült Államok) működhetnek.</li>
+        <li><strong>Google</strong> (Google Ireland Ltd., illetve Google LLC) – a beérkező megkeresések e-mailben (Gmail) történő fogadása és tárolása, valamint a Weboldalon megjelenő betűtípusok (Google Fonts) kiszolgálása.</li>
+      </ul>
+
+      <h3>4. Adattovábbítás harmadik országba</h3>
+      <p>A fenti adatfeldolgozók (különösen a Web3Forms és a Google) egyes szolgáltatásai az Európai Gazdasági Térségen kívül, így az Egyesült Államokban is megvalósíthatnak adatkezelést. Ezen továbbítások jogszerűségét a szolgáltatók az Európai Bizottság által jóváhagyott megfelelőségi határozatok és/vagy általános szerződési feltételek (Standard Contractual Clauses) alapján biztosítják. A megfelelő garanciákról az érintett az adatkezelőtől kérhet tájékoztatást.</p>
+
+      <h3>5. Sütik (cookie-k) és külső szolgáltatások</h3>
+      <p>A Weboldal a működéséhez nem helyez el nyomkövetésre szolgáló sütiket, és nem használ marketing- vagy analitikai célú nyomkövetést. A Weboldal a betűtípusokat a Google Fonts szolgáltatáson keresztül tölti be, amelynek során a látogató IP-címe technikai okból a Google szerverei felé továbbításra kerülhet. A böngészőből indított funkciók (pl. telefonhívás, e-mail) a látogató saját eszközének alkalmazásait használják.</p>
+
+      <h3>6. Adatbiztonság</h3>
+      <p>Az adatkezelő a tudomány és technológia állása, a megvalósítás költségei, továbbá az adatkezelés kockázatainak figyelembevételével megfelelő technikai és szervezési intézkedéseket tesz a kezelt adatok védelme érdekében, így különösen a jogosulatlan hozzáférés, megváltoztatás, továbbítás, nyilvánosságra hozatal, törlés vagy megsemmisülés, valamint a véletlen sérülés ellen.</p>
+
+      <h3>7. Az érintett jogai</h3>
+      <p>Az érintettet a kezelt személyes adataival kapcsolatban az alábbi jogok illetik meg:</p>
+      <ul>
+        <li><strong>Hozzáférés</strong> a kezelt adataihoz (tájékoztatás kérése);</li>
+        <li><strong>Helyesbítés</strong> kérése pontatlan vagy hiányos adatok esetén;</li>
+        <li><strong>Törlés</strong> („elfeledtetéshez való jog") a jogszabályi feltételek fennállása esetén;</li>
+        <li>Az adatkezelés <strong>korlátozása</strong>;</li>
+        <li><strong>Tiltakozás</strong> az adatkezelés ellen;</li>
+        <li><strong>Adathordozhatóság</strong> – az adatok géppel olvasható formátumban való megkapása;</li>
+        <li>A <strong>hozzájárulás visszavonása</strong> bármikor, amely nem érinti a visszavonás előtti adatkezelés jogszerűségét.</li>
+      </ul>
+      <p>Kérelmét a fenti elérhetőségeken jelezheti. Az adatkezelő a kérelmet indokolatlan késedelem nélkül, de legfeljebb 1 hónapon belül teljesíti, illetve – elutasítás esetén – tájékoztatást nyújt annak okairól.</p>
+
+      <h3>8. Jogorvoslati lehetőségek</h3>
+      <p>Amennyiben úgy ítéli meg, hogy az adatkezelés nem felel meg a jogszabályi előírásoknak, panaszt tehet a felügyeleti hatóságnál:</p>
+      <p>
+        <strong>Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</strong><br />
+        Cím: 1055 Budapest, Falk Miksa utca 9–11.<br />
+        Postacím: 1363 Budapest, Pf. 9.<br />
+        Telefon: +36 (1) 391-1400<br />
+        E-mail: <a href="mailto:ugyfelszolgalat@naih.hu">ugyfelszolgalat@naih.hu</a><br />
+        Honlap: <a href="https://www.naih.hu" target="_blank" rel="noopener">www.naih.hu</a>
+      </p>
+      <p>Jogainak megsértése esetén az érintett bírósághoz is fordulhat. A per – választása szerint – a lakóhelye vagy tartózkodási helye szerinti törvényszék előtt is megindítható.</p>
+
+      <h3>9. A tájékoztató módosítása</h3>
+      <p>Az adatkezelő fenntartja a jogot a jelen Tájékoztató egyoldalú módosítására, amelyről a Weboldalon történő közzététellel tájékoztatja az érintetteket. A mindenkor hatályos szöveg a Weboldalon érhető el.</p>
+
+      <h3>10. Jogi nyilatkozat (felelősség korlátozása)</h3>
+      <p>A Weboldalon közölt információk kizárólag általános tájékoztatás célját szolgálják, nem minősülnek szerződéses ajánlatnak, kötelezettségvállalásnak, illetve szakmai vagy jogi tanácsadásnak. A konkrét feltételek minden esetben az egyedi egyeztetés és írásos megállapodás alapján kerülnek meghatározásra.</p>
+      <p>Az adatkezelő törekszik a Weboldal tartalmának pontosságára és naprakészségére, azonban azok hibátlanságáért, teljességéért és folyamatos elérhetőségéért – a vonatkozó jogszabályok keretei között – felelősséget nem vállal. A Weboldalon szereplő fényképek illusztrációk, illetve korábbi munkák bemutatására szolgálnak. A Weboldal használata a látogató saját felelősségére történik; az adatkezelő nem felel a használatból eredő közvetett vagy következményi károkért, kivéve, ha a felelősség korlátozását jogszabály kizárja.</p>
+      <p>A Weboldalról elérhető külső hivatkozások tartalmáért az adatkezelő nem felelős.</p>
+
+      <p class="legal-meta">
+        Hatályos: <span class="ph">[HATÁLYBALÉPÉS DÁTUMA]</span> napjától.<br />
+        Üzemeltető: Tóth Bendegúz egyéni vállalkozó (Tóth Épületgépészet).
+      </p>
+    </div>
+  </div>
+</div>
 
 <!-- LIGHTBOX -->
 <div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="Galéria előnézet">
@@ -1204,56 +1452,48 @@ section[id]{scroll-margin-top:92px}
     if(e.key==="ArrowRight") nav(1);
   });
 
-  /* File upload UI */
-  var fileInput = document.getElementById("fileInput");
-  var uploadBox = document.getElementById("uploadBox");
-  var fileList = document.getElementById("fileList");
-  var attached = [];
-  function fmt(bytes){
-    if(bytes<1024) return bytes+" B";
-    if(bytes<1024*1024) return (bytes/1024).toFixed(0)+" KB";
-    return (bytes/(1024*1024)).toFixed(1)+" MB";
+  /* Legal modals (Impresszum & Adatkezelési tájékoztató) */
+  var modalLastFocus = null;
+  function openModalEl(modal){
+    if(!modal) return;
+    Array.prototype.forEach.call(document.querySelectorAll(".lmodal.open"), function(m){ m.classList.remove("open"); });
+    modalLastFocus = document.activeElement;
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    var body = modal.querySelector(".lmodal-body");
+    if(body){ body.scrollTop = 0; body.focus(); }
   }
-  function render(){
-    fileList.innerHTML = "";
-    attached.forEach(function(f,i){
-      var row = document.createElement("div");
-      row.className = "uf";
-      var name = document.createElement("span");
-      name.textContent = f.name + " (" + fmt(f.size) + ")";
-      var rm = document.createElement("button");
-      rm.type = "button"; rm.textContent = "×"; rm.setAttribute("aria-label","Eltávolítás: "+f.name);
-      rm.addEventListener("click", function(){ attached.splice(i,1); render(); syncInput(); });
-      row.appendChild(name); row.appendChild(rm);
-      fileList.appendChild(row);
+  function closeModalEl(modal){
+    if(modal) modal.classList.remove("open");
+    document.body.style.overflow = "";
+    if(modalLastFocus && modalLastFocus.focus) modalLastFocus.focus();
+  }
+  function wireModal(attr, id){
+    var modal = document.getElementById(id);
+    Array.prototype.forEach.call(document.querySelectorAll("[" + attr + "]"), function(btn){
+      btn.addEventListener("click", function(e){ e.preventDefault(); e.stopPropagation(); openModalEl(modal); });
     });
-  }
-  function syncInput(){
-    if(typeof DataTransfer !== "undefined"){
-      var dt = new DataTransfer();
-      attached.forEach(function(f){ dt.items.add(f); });
-      fileInput.files = dt.files;
+    if(modal){
+      var closeBtn = modal.querySelector(".lmodal-close");
+      if(closeBtn) closeBtn.addEventListener("click", function(){ closeModalEl(modal); });
+      modal.addEventListener("click", function(e){ if(e.target===modal) closeModalEl(modal); });
     }
   }
-  fileInput.addEventListener("change", function(e){
-    Array.prototype.forEach.call(e.target.files, function(f){ attached.push(f); });
-    render(); syncInput();
+  wireModal("data-call-open", "callModal");
+  wireModal("data-impr-open", "imprModal");
+  wireModal("data-legal-open", "legalModal");
+  // Close the chooser once a number is picked (the tel: link still dials)
+  Array.prototype.forEach.call(document.querySelectorAll("#callModal .call-opt"), function(opt){
+    opt.addEventListener("click", function(){
+      var m = document.getElementById("callModal");
+      setTimeout(function(){ if(m) m.classList.remove("open"); document.body.style.overflow = ""; }, 60);
+    });
   });
-  ["dragenter","dragover"].forEach(function(ev){
-    uploadBox.addEventListener(ev, function(e){ e.preventDefault(); uploadBox.classList.add("drag"); });
+  document.addEventListener("keydown", function(e){
+    if(e.key!=="Escape") return;
+    var openModal = document.querySelector(".lmodal.open");
+    if(openModal) closeModalEl(openModal);
   });
-  ["dragleave","drop"].forEach(function(ev){
-    uploadBox.addEventListener(ev, function(e){ e.preventDefault(); uploadBox.classList.remove("drag"); });
-  });
-  uploadBox.addEventListener("drop", function(e){
-    if(e.dataTransfer && e.dataTransfer.files){
-      Array.prototype.forEach.call(e.dataTransfer.files, function(f){
-        if(/^image\//.test(f.type) || /\.(jpe?g|png|heic|webp)$/i.test(f.name)) attached.push(f);
-      });
-      render(); syncInput();
-    }
-  });
-  uploadBox.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); fileInput.click(); } });
 
   /* Form validation */
   var form = document.getElementById("contactForm");
@@ -1267,7 +1507,7 @@ section[id]{scroll-margin-top:92px}
   /* ---------------------------------------------------------------
      E-mail küldés háttérben (NEM nyit meg másik appot).
      A Web3Forms ingyenes szolgáltatás továbbítja az üzenetet a
-     hunoratt@gmail.com címre. Szerezzen egy ingyenes hozzáférési
+     tothepuletgepeszet2026@gmail.com címre. Szerezzen egy ingyenes hozzáférési
      kulcsot a https://web3forms.com oldalon (csak az e-mail címet
      kell megadni), majd illessze be ide:
      --------------------------------------------------------------- */
@@ -1309,9 +1549,6 @@ section[id]{scroll-margin-top:92px}
     fd.append("subject", "Új ajánlatkérés – " + (data.service || "Épületgépészet") + " – " + data.name);
     fd.append("from_name", "Tóth Épületgépészet – weboldal");
     if(data.email) fd.append("replyto", data.email);
-    if(attached.length){
-      fd.append("Csatolt fotók", attached.map(function(f){ return f.name; }).join(", "));
-    }
 
     function showError(msg){
       if(errorMsg && msg) errorMsg.textContent = msg;
@@ -1332,7 +1569,7 @@ section[id]{scroll-margin-top:92px}
     }).then(function(res){ return res.json(); }).then(function(json){
       submitBtn.disabled = false; submitBtn.innerHTML = btnHtml;
       if(json && json.success){
-        success.classList.add("show"); form.reset(); attached = []; render();
+        success.classList.add("show"); form.reset();
         success.scrollIntoView({behavior: reduce ? "auto":"smooth", block:"center"});
       } else {
         showError((json && json.message) ? json.message : null);
