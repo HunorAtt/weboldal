@@ -1381,7 +1381,7 @@ section[id]{scroll-margin-top:92px}
       <ul>
         <li><strong>Tárhelyszolgáltató:</strong> Cloudflare, Inc. (101 Townsend Street, San Francisco, CA 94107, Amerikai Egyesült Államok) – a Weboldal kiszolgálása a Cloudflare Pages szolgáltatáson keresztül. A szolgáltató szerverei az Európai Unión kívül is működhetnek.</li>
         <li><strong>Web3Forms</strong> (web3forms.com) – az űrlapon megadott adatok továbbítása e-mailben az adatkezelő részére. A szolgáltatás szerverei részben az Európai Unión kívül (Egyesült Államok) működhetnek.</li>
-        <li><strong>Google</strong> (Google Ireland Ltd., illetve Google LLC) – a beérkező megkeresések e-mailben (Gmail) történő fogadása és tárolása.</li>
+        <li><strong>Google</strong> (Google Ireland Ltd., illetve Google LLC) – a beérkező megkeresések e-mailben (Gmail) történő fogadása és tárolása; valamint kizárólag a látogató hozzájárulása esetén a <strong>Google Ads</strong> konverziómérése (a Google-hirdetések eredményességének, pl. az ajánlatkérések mérése). Hozzájárulás hiányában a Google Ads mérőkód nem töltődik be.</li>
         <li><strong>Meta Platforms Ireland Limited</strong> (4 Grand Canal Square, Dublin 2, Írország) – kizárólag a látogató hozzájárulása esetén, a Meta Pixel segítségével a Facebook- és Instagram-hirdetések hatékonyságának mérése és célzása. Hozzájárulás hiányában a Meta Pixel nem töltődik be.</li>
       </ul>
 
@@ -1390,7 +1390,12 @@ section[id]{scroll-margin-top:92px}
 
       <h3>5. Sütik (cookie-k) és külső szolgáltatások</h3>
       <p>A Weboldal a működéséhez feltétlenül szükséges, technikai sütiket (illetve a hozzájárulási döntés helyi tárolását) használja, amelyekhez hozzájárulás nem szükséges. A betűtípusokat a Weboldal saját szerverről (a tárhelyről) szolgálja ki, ezért emiatt nem történik adattovábbítás külső betűtípus-szolgáltató felé.</p>
-      <p><strong>Marketing süti – Meta Pixel:</strong> a Weboldal a Meta Pixel mérőkódot használhatja a Facebook- és Instagram-hirdetések teljesítményének méréséhez és a hirdetések célzásához. A Meta Pixel <strong>kizárólag a látogató előzetes, kifejezett hozzájárulása esetén</strong> töltődik be, a süti-sávon történő elfogadással; ennek jogalapja a GDPR 6. cikk (1) a) pontja szerinti hozzájárulás. A hozzájárulás bármikor, díjmentesen visszavonható a láblécben található „Süti beállítások" gombbal; a visszavonás a jövőre nézve nem érinti a korábbi adatkezelés jogszerűségét. Hozzájárulás hiányában marketing célú süti nem kerül elhelyezésre, és a Meta Pixel nem fut le.</p>
+      <p><strong>Marketing sütik – Meta Pixel és Google Ads:</strong> a Weboldal a Facebook-/Instagram- (Meta Pixel) és a Google-hirdetések (Google Ads) eredményességének mérésére, a konverziók (pl. ajánlatkérés) követésére és a hirdetések célzására szolgáló mérőkódokat használhat. Mindezek jogalapja a GDPR 6. cikk (1) a) pontja szerinti hozzájárulás.</p>
+      <ul>
+        <li>A <strong>Meta Pixel kizárólag a látogató előzetes, kifejezett hozzájárulása esetén</strong> töltődik be; hozzájárulás hiányában nem fut le, és nem helyez el sütit.</li>
+        <li>A <strong>Google Ads</strong> a Google „beleegyezési mód" (Consent Mode v2) technológiáját alkalmazza: a mérőkód alapállapotban <strong>tiltott, süti nélküli módban</strong> működik. Hozzájárulás nélkül nem helyez el marketing sütit és nem használ egyéni azonosítót – legfeljebb névtelen, összesített jelzéseket küldhet. Marketing süti és teljes körű mérés kizárólag az Ön hozzájárulása után történik.</li>
+      </ul>
+      <p>A hozzájárulás bármikor, díjmentesen visszavonható a láblécben található „Süti beállítások" gombbal; a visszavonás a jövőre nézve nem érinti a korábbi adatkezelés jogszerűségét.</p>
       <p>A böngészőből indított funkciók (pl. telefonhívás, e-mail) a látogató saját eszközének alkalmazásait használják.</p>
 
       <h3>6. Adatbiztonság</h3>
@@ -1584,8 +1589,11 @@ section[id]{scroll-margin-top:92px}
      Illessze be a Meta Pixel azonosítóját (csak számjegyek):
      --------------------------------------------------------------- */
   var META_PIXEL_ID = "2078249023570005";
+  var GOOGLE_ADS_ID = "AW-18313800381";
+  var GOOGLE_ADS_SEND_TO = "AW-18313800381/XSZjCLfZltYcEL3V2ZxE"; // konverzió: ajánlatkérő űrlap beküldése
   var cookieBar = document.getElementById("cookieBar");
   var pixelLoaded = false;
+  var adsLoaded = false;
   function loadMetaPixel(){
     if(pixelLoaded) return;
     if(!/^\d{6,}$/.test(META_PIXEL_ID)) return; // helyőrző esetén nem tölt be, nem küld adatot
@@ -1600,9 +1608,52 @@ section[id]{scroll-margin-top:92px}
   }
   function getConsent(){ try{ return localStorage.getItem("cookieConsent"); }catch(e){ return null; } }
   function setConsent(v){ try{ localStorage.setItem("cookieConsent", v); }catch(e){} }
+  // Google Ads – Consent Mode v2 (Advanced): a tag betölt, de alapból minden TILTVA,
+  // süti nélküli módban; hozzájáruláskor "granted"-re vált, visszavonáskor "denied"-re.
+  function initGoogleAdsConsentMode(){
+    if(adsLoaded) return;
+    if(!/^AW-\d+$/.test(GOOGLE_ADS_ID)) return; // hibás/helyőrző azonosító esetén nem indul
+    adsLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    window.gtag('set', 'ads_data_redaction', true);
+    window.gtag('set', 'url_passthrough', true);
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GOOGLE_ADS_ID;
+    document.head.appendChild(s);
+    window.gtag('js', new Date());
+    window.gtag('config', GOOGLE_ADS_ID);
+    if(getConsent() === "granted") grantGoogleConsent();
+  }
+  function grantGoogleConsent(){
+    if(typeof window.gtag !== "function") return;
+    window.gtag('consent', 'update', {
+      'ad_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted',
+      'analytics_storage': 'granted'
+    });
+  }
+  function denyGoogleConsent(){
+    if(typeof window.gtag !== "function") return;
+    window.gtag('consent', 'update', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+  }
   function showCookieBar(){ if(cookieBar) cookieBar.classList.add("show"); }
   function hideCookieBar(){ if(cookieBar) cookieBar.classList.remove("show"); }
   (function initConsent(){
+    initGoogleAdsConsentMode(); // a Google tag mindig fut (Consent Mode), alapból tiltva
     var c = getConsent();
     if(c === "granted") loadMetaPixel();
     else if(c !== "denied") setTimeout(showCookieBar, 700);
@@ -1610,8 +1661,8 @@ section[id]{scroll-margin-top:92px}
   var ckAccept = document.getElementById("cookieAccept");
   var ckDecline = document.getElementById("cookieDecline");
   var ckSettings = document.getElementById("cookieSettings");
-  if(ckAccept) ckAccept.addEventListener("click", function(){ setConsent("granted"); hideCookieBar(); loadMetaPixel(); });
-  if(ckDecline) ckDecline.addEventListener("click", function(){ setConsent("denied"); hideCookieBar(); if(pixelLoaded) location.reload(); });
+  if(ckAccept) ckAccept.addEventListener("click", function(){ setConsent("granted"); hideCookieBar(); grantGoogleConsent(); loadMetaPixel(); });
+  if(ckDecline) ckDecline.addEventListener("click", function(){ setConsent("denied"); hideCookieBar(); denyGoogleConsent(); if(pixelLoaded) location.reload(); });
   if(ckSettings) ckSettings.addEventListener("click", function(e){ e.preventDefault(); e.stopPropagation(); showCookieBar(); });
 
   var form = document.getElementById("contactForm");
@@ -1679,8 +1730,9 @@ section[id]{scroll-margin-top:92px}
     }).then(function(res){ return res.json(); }).then(function(json){
       submitBtn.disabled = false; submitBtn.innerHTML = btnHtml;
       if(json && json.success){
-        // Meta Pixel konverzió – csak ha a látogató hozzájárult (a Pixel betöltött)
+        // Konverziós események – csak ha a látogató hozzájárult (a követők betöltöttek)
         if(pixelLoaded && typeof window.fbq === "function"){ window.fbq("track", "Lead"); }
+        if(adsLoaded && typeof window.gtag === "function"){ window.gtag("event", "conversion", { "send_to": GOOGLE_ADS_SEND_TO }); }
         success.classList.add("show"); form.reset();
         success.scrollIntoView({behavior: reduce ? "auto":"smooth", block:"center"});
       } else {
